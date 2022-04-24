@@ -1,0 +1,55 @@
+{
+  "Main": {
+    "team_member": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "headshot": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "headshot"
+            }
+          },
+          "linkedin": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "linkedin"
+            }
+          },
+          "full_name": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading1,heading2,heading3,heading4,heading5,heading6",
+              "label": "full_name"
+            }
+          },
+          "job_title": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading1,heading2,heading3,heading4,heading5,heading6",
+              "label": "job_title"
+            }
+          },
+          "bio_copy": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+              "label": "bio_copy"
+            }
+          },
+          "linkedin_url": {
+            "type": "Link",
+            "config": {
+              "label": "linkedin_url"
+            }
+          }
+        },
+        "label": "team_member"
+      }
+    }
+  }
+}

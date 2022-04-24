@@ -1,0 +1,50 @@
+{
+    "Main" : {
+      "uid" : {
+        "type" : "UID",
+        "config" : {
+          "label" : "contact us"
+        }
+      },
+      "header_copy" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+          "allowTargetBlank" : true,
+          "label" : "header copy"
+        }
+      },
+      "header_sub_copy" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+          "allowTargetBlank" : true,
+          "label" : "header sub copy"
+        }
+      },
+      "image_tagline" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+          "allowTargetBlank" : true,
+          "label" : "image tagline"
+        }
+      },
+      "client_image" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "img" : {
+              "type" : "Image",
+              "config" : {
+                "constraint" : { },
+                "thumbnails" : [ ],
+                "label" : "img"
+              }
+            }
+          },
+          "label" : "client image"
+        }
+      }
+    }
+  }

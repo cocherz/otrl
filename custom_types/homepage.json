@@ -1,0 +1,71 @@
+{
+  "Main": {
+    "homepage_banner": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "title": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading2",
+              "label": "Banner Title",
+              "placeholder": "Site Title..."
+            }
+          },
+          "tagline": {
+            "type": "StructuredText",
+            "config": {
+              "single": "paragraph",
+              "label": "Tagline",
+              "placeholder": "Site Tagline..."
+            }
+          },
+          "button_label": {
+            "type": "StructuredText",
+            "config": {
+              "single": "paragraph",
+              "label": "Button Label"
+            }
+          }
+        },
+        "label": "Homepage Banner",
+        "repeat": false
+      }
+    },
+    "who_we_are": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading3",
+        "label": "Who we are"
+      }
+    },
+    "who_we_are_bullets": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "list-item,rtl",
+        "label": "Who_we_are_bullets"
+      }
+    },
+    "what_we_do": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "heading3",
+        "label": "What we do"
+      }
+    },
+    "what_we_do_bullets": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "list-item,rtl",
+        "label": "what_we_do_bullets"
+      }
+    },
+    "tagline": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, rtl",
+        "label": "tagline"
+      }
+    }
+  }
+}

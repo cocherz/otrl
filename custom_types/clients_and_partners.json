@@ -1,0 +1,75 @@
+{
+    "Main" : {
+      "clients_and_partners_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading3",
+          "label" : "Clients and partners title"
+        }
+      },
+      "clients_and_partner_images" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "client_logo" : {
+              "type" : "Image",
+              "config" : {
+                "constraint" : { },
+                "thumbnails" : [ ],
+                "label" : "client logo"
+              }
+            }
+          },
+          "label" : "clients and partner images"
+        }
+      },
+      "body" : {
+        "type" : "Slices",
+        "fieldset" : "Slice zone",
+        "config" : {
+          "labels" : null,
+          "choices" : {
+            "client_feedback" : {
+              "type" : "Slice",
+              "fieldset" : "client_feedback",
+              "description" : "Client Feedback",
+              "icon" : "format_quote",
+              "display" : "grid",
+              "non-repeat" : { },
+              "repeat" : {
+                "client_logo" : {
+                  "type" : "Image",
+                  "config" : {
+                    "constraint" : { },
+                    "thumbnails" : [ ],
+                    "label" : "client_logo"
+                  }
+                },
+                "client_name" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph",
+                    "label" : "Client_name"
+                  }
+                },
+                "client_company_name" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph",
+                    "label" : "client company name"
+                  }
+                },
+                "client_feedback" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                    "label" : "client feedback"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

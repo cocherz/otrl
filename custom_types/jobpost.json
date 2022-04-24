@@ -1,0 +1,149 @@
+{
+  "Main" : {
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "uid"
+      }
+    },
+    "job_title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading2",
+        "label" : "Job Title",
+        "placeholder" : "job title"
+      }
+    },
+    "location" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Southwark, London", "Work from home" ],
+        "default_value" : "Southwark, London",
+        "label" : "location"
+      }
+    },
+    "office_or_remote" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Office & remote working", "Office", "Remote working" ],
+        "default_value" : "Office & remote working",
+        "label" : "office or remote"
+      }
+    },
+    "salary" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "paragraph",
+        "allowTargetBlank" : true,
+        "label" : "salary",
+        "placeholder" : "Competitive salary"
+      }
+    },
+    "link_copy" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "link copy"
+      }
+    },
+    "con_or_perm" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Permanent", "Contractor" ],
+        "default_value" : "Permanent",
+        "label" : "con or perm"
+      }
+    },
+    "job_image" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "job image"
+      }
+    },
+    "title_about_us" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "heading2",
+        "label" : "Title About us",
+        "placeholder" : "About Us"
+      }
+    },
+    "copy_about_us" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph,list-item",
+        "label" : "About us copy"
+      }
+    },
+    "title_offer" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading2",
+        "label" : "title offer",
+        "placeholder" : "What we offer"
+      }
+    },
+    "offer_copy" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph,list-item",
+        "label" : "offer_copy"
+      }
+    },
+    "title_about_you" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading2",
+        "label" : "Title about you",
+        "placeholder" : "About You"
+      }
+    },
+    "copy_about_you" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph,list-item",
+        "label" : "copy about you"
+      }
+    },
+    "key_skills" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading2",
+        "label" : "Key skills",
+        "placeholder" : "Key Skills"
+      }
+    },
+    "copy_key_skills" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph,heading3,heading4,list-item",
+        "label" : "copy key skills"
+      }
+    },
+    "title_tools" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading2",
+        "label" : "Title Tools",
+        "placeholder" : "Tools & Technologies"
+      }
+    },
+    "technologies" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "tech" : {
+            "type" : "StructuredText",
+            "config" : {
+              "multi" : "paragraph",
+              "label" : "tech"
+            }
+          }
+        },
+        "label" : "technologies"
+      }
+    }
+  }
+}
