@@ -1,6 +1,6 @@
-# Prismic & React.js Example Multi-Page Site
+# OTRL marketing site
 
-> [React.js](https://reactjs.org/) example Multi-Page Site with content managed in [Prismic](https://prismic.io)
+> [React.js](https://reactjs.org/) Site with content managed in [Prismic](https://prismic.io)
 
 ## Check out the dedicated article to get this project up and running
 
