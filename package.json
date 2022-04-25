@@ -1,7 +1,7 @@
 {
-  "name": "reactjs-multi-page-site",
-  "description": "An example multi-page site built using React.js connected to Prismic CMS",
-  "author": "Prismic",
+  "name": "otrl-marketing-site",
+  "description": "An multi-page site built using React.js connected to Prismic CMS",
+  "author": "Maxwell Cochrane",
   "dependencies": {
     "@prismicio/client": "^6.4.2",
     "@prismicio/helpers": "^2.0.0-beta.6",
