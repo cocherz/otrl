@@ -1,12 +1,13 @@
 import React from "react";
-import { PrismicText, PrismicLink } from "@prismicio/react";
+import { PrismicText } from "@prismicio/react";
 
 /**
  * Homepage banner component
  */
-export const HomepageBanner = ({ banner }) => (
+
+export const AboutUsBanner = ({ banner }) => (
   <section className="homepage-banner background">
-    <div className="banner-content container">
+    <div className="banner-content section-container">
       <h2 className="page-heading">
         <PrismicText field={banner.title} />
       </h2>

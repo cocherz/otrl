@@ -1,11 +1,11 @@
-import { PrismicText, PrismicLink } from "@prismicio/react";
+import { PrismicText } from "@prismicio/react";
 import React from "react";
 
 const ImageLink = ({ imageLink }) => {
   return (
     <li>
       <a href={imageLink.url}>
-        <img className="socialImage" src={imageLink.image.url} />
+        <img className="socialImage" src={imageLink.image.url} alt={imageLink.image.alt}/>
       </a>
     </li>
   );

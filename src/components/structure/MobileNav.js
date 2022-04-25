@@ -3,7 +3,7 @@ import { PrismicLink, PrismicText } from "@prismicio/react";
 import { PrimaryButton } from "./common";
 import React from "react";
 
-const BurgerSVG = ({}) => {
+const BurgerSVG = () => {
   return (
     <svg
       width="19"
@@ -33,7 +33,7 @@ const BurgerSVG = ({}) => {
     </svg>
   );
 };
-const CrossSVG = ({}) => {
+const CrossSVG = () => {
   return (
     <svg
       width="13"
@@ -70,12 +70,10 @@ const BurgerMenu = ({ setIsNavExpanded, isNavExpanded }) => {
   );
 };
 
-export const MobileMenu = ({ menuLink, key }) => {
+export const MobileMenu = ({ menuLink, i }) => {
   return (
-    <PrismicLink field={menuLink.link} >
-      <li  className="mobile-menu-item" key={key}>
-        <div className=""> </div>
-
+    <PrismicLink field={menuLink.link} key={i}>
+      <li  className="mobile-menu-item" >
         <PrismicText field={menuLink.label} />
         <span> {">"} </span>
       </li>
@@ -98,7 +96,7 @@ export const MobileNav = ({ menuDoc }) => {
           <div className="mobile-menu-coontainer">
             <ul className="mobile-menu-items">
               {menuDoc.data.menu_links.map((menuLink, i) => (
-                <MobileMenu menuLink={menuLink} key={i}/>
+                <MobileMenu menuLink={menuLink} key={i} />
               ))}
               <PrimaryButton
                 classNames="wide-btn"
@@ -110,7 +108,7 @@ export const MobileNav = ({ menuDoc }) => {
         </div>
       </section>
     );
-
-    return null;
+    
   }
+  return null;
 };

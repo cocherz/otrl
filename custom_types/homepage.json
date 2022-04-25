@@ -63,8 +63,93 @@
     "tagline": {
       "type": "StructuredText",
       "config": {
-        "multi": "paragraph, rtl",
+        "multi": "paragraph,rtl",
         "label": "tagline"
+      }
+    }
+  },
+  "Home Page": {
+    "home_page_header": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Home page header"
+      }
+    },
+    "home_page_copy": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "label": "home page copy"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": null,
+        "choices": {
+          "our_services_component": {
+            "type": "Slice",
+            "fieldset": "Our Services component",
+            "description": "Our Services component",
+            "icon": "add",
+            "display": "list",
+            "non-repeat": {
+              "our_services_header": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label": "Our services header"
+                }
+              },
+              "our_services_copy": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "label": "our services copy"
+                }
+              },
+              "our_services_tagline": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "label": "our services tagline"
+                }
+              }
+            },
+            "repeat": {
+              "service_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "service image"
+                }
+              },
+              "service_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label": "service title"
+                }
+              },
+              "service_copy": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "label": "service copy"
+                }
+              },
+              "service_page_link": {
+                "type": "Link",
+                "config": {
+                  "label": "service page link"
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

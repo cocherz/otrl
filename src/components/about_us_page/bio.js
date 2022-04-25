@@ -14,15 +14,9 @@ export const Bio = ({ biopic }) => (
         {biopic.map((member, i) => (
           <li key={i}>
             <section className="team_member">
-              <img
-                src={member.headshot.url}
-                className="headshot centerImage padDown"
-              />
+              <img src={member.headshot.url} className="headshot centerImage padDown" alt="headshot" />
               <a href={member.linkedin_url.url}>
-                <img
-                  src={member.linkedin.url}
-                  className="linkedinImage centerImage padDown"
-                />
+                <img src={member.linkedin.url} className="linkedinImage centerImage padDown" alt="linkedin" />
               </a>
               <div className="title_job">
                 <PrismicText field={member.full_name} />

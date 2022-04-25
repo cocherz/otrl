@@ -3,7 +3,7 @@ import { PrismicText } from "@prismicio/react";
 
 export const QuoteSection = ({ data }) => {
   return (
-    <section className="companyQuotes section-container content-section">
+    <section className="companyQuotes section-container">
       <div className="content-section">
         <h2>
           <PrismicText field={data.quotes_title} />
@@ -27,7 +27,7 @@ export const CareerQuote = ({ data }) => (
     </div>
     <div className="quoterInfo">
       <div className="quoterImage">
-        <img className="smallImg" src={data.quote_image.url} />
+        <img className="smallImg" src={data.quote_image.url} alt={data.quote_image.alt}/>
       </div>
       <div className="nameAndRole">
         <div className="quoteName">

@@ -1,17 +1,16 @@
 import React from "react";
 import { useEffect } from "react";
-import { PrismicText, useSinglePrismicDocument } from "@prismicio/react";
+import { useSinglePrismicDocument } from "@prismicio/react";
 import { ClientFeedbackSlider, OurClients } from "../components/structure/common";
 import { Layout } from "../components/Layout";
-import { HomepageBanner } from "../components/home_page/HomepageBanner";
-import { Bio } from "../components/home_page/bio";
-import { KeyPoints, Tagline } from "../components/home_page/KeyPoints";
+import { Bio } from "../components/about_us_page/bio";
+import { KeyPoints, Tagline } from "../components/about_us_page/KeyPoints";
 import { NotFound } from "./NotFound";
-
+import { AboutUsBanner } from "../components/about_us_page/HomepageBanner";
 /**
  * Website homepage component
  */
-export const HomePage = () => {
+export const WhoWeAre = () => {
   const [biopic, bioState] = useSinglePrismicDocument("team");
   const [home, homeState] = useSinglePrismicDocument("homepage");
   const [menu, menuState] = useSinglePrismicDocument("menu");
@@ -36,7 +35,7 @@ export const HomePage = () => {
     return (
       <Layout wrapperClass="page-content homepage" menuDoc={menu} footerDoc={footer}>
       <div className="header-spacer"> </div>
-        <HomepageBanner banner={home.data.homepage_banner[0]}/>
+        <AboutUsBanner banner={home.data.homepage_banner[0]}/>
         <KeyPoints
           title={home.data.who_we_are}
           copy={home.data.who_we_are_bullets}

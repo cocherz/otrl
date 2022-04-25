@@ -1,5 +1,4 @@
 import React from "react";
-import { PrismicText } from "@prismicio/react";
 
 export const ShareVacany = ({ icons }) => {
   return (
@@ -7,19 +6,19 @@ export const ShareVacany = ({ icons }) => {
       <h2> Share this vacancy </h2>
       <div className="social-share-icons">
         <a href="google.com" title="share this vacancy on linkedin">
-          <img src={icons.linkedin.url} />
+          <img src={icons.linkedin.url} alt={icons.linkedin.alt}/>
         </a>
         <a href="google.com" title="share this vacancy on twitter">
-          <img src={icons.twitter.url} />
+          <img src={icons.twitter.url} alt={icons.twitter.alt}/>
         </a>
         <a href="google.com" title="share this vacancy on facebook">
-          <img src={icons.facebook.url} alt="hello facebook" />
+          <img src={icons.facebook.url} alt={icons.facebook.alt} />
         </a>
         <a href="google.com" title="share this vacancy via email">
-          <img src={icons.email.url} />
+          <img src={icons.email.url} alt={icons.email.alt}/>
         </a>
         <a href="google.com" title="share this vacancy on slack">
-          <img src={icons.slack.url} />
+          <img src={icons.slack.url} alt={icons.slack.alt}/>
         </a>
       </div>
     </section>

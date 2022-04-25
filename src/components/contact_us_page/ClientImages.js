@@ -1,4 +1,4 @@
-import { PrismicText, PrismicImage, PrismicI } from "@prismicio/react";
+import { PrismicText } from "@prismicio/react";
 import React from "react";
 
 export const ClientImages = ({ image }) => {
@@ -12,7 +12,7 @@ export const ClientImages = ({ image }) => {
       <div className="client-images">
         {image.client_image.map((pic, i) => {
             return(
-          <img className="client-image" src={pic.img.url} />
+          <img className="client-image" src={pic.img.url} alt={pic.img.alt} key={i}/>
             )
         })}
       </div>

@@ -1,13 +1,13 @@
 import { PrismicText, PrismicLink } from "@prismicio/react";
 import { PrimaryButton } from "./common";
-import { MobileMenu, MobileNav } from "./MobileNav";
+import { MobileNav } from "./MobileNav";
 import React from "react";
 
 const HeaderLogo = ({ logo }) => {
   return (
     <div className="logo">
       <PrismicLink href="/">
-        <img src={logo} />
+        <img src={logo} alt="Ontrack Retail"/>
       </PrismicLink>
     </div>
   );

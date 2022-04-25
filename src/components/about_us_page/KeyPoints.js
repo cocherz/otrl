@@ -1,5 +1,5 @@
 import React from "react";
-import {PrismicText, PrismicRichText} from "@prismicio/react";
+import {PrismicText } from "@prismicio/react";
 
 
 export const Tagline = ({ tagline }) => {
