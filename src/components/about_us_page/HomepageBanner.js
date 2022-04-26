@@ -8,7 +8,7 @@ import { PrismicText } from "@prismicio/react";
 export const AboutUsBanner = ({ banner }) => (
   <section className="homepage-banner background">
     <div className="banner-content section-container">
-      <h2 className="page-heading">
+      <h2 className="page-heading-center">
         <PrismicText field={banner.title} />
       </h2>
       <p className="banner-description">

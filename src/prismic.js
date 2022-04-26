@@ -23,6 +23,14 @@ export const client = prismic.createClient(repositoryName, {
       path: "/careers/:uid",
     },
     {
+      type: "foo",
+      path: "/cookie-policy",
+    },
+    {
+      type: "foo",
+      path: "/privacy-policy",
+    },
+    {
       type: "homepage",
       path: "/who-we-are",
     },

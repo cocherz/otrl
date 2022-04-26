@@ -1,11 +1,11 @@
 import React from "react";
-import {PrismicText } from "@prismicio/react";
+import {PrismicText, PrismicRichText } from "@prismicio/react";
 
 
 export const Tagline = ({ tagline }) => {
   return (
-    <div className="section-container purpleText">
-              <PrismicText field={tagline} />
+    <div className="purpleText small-pad">
+              <PrismicRichText field={tagline} />
     </div>
   );
 };
@@ -13,21 +13,22 @@ export const Tagline = ({ tagline }) => {
 
 
 
-export const KeyPoints = ({ title, copy }) => {
+export const KeyPoints = ({ title, copy, tagline }) => {
     return (
-      <section className="about-us-points content-container section-container">
+      <section className="about-us-points container section-container">
             <div>
-            <h2>
+            <h3>
               <PrismicText field={title} />
-              </h2>
+              </h3>
               <ul className="section-container">
               {copy.map((lineItem, i) => {
                   return (
-                      <li key={i} className="bullet-point"> 
+                      <li key={i} className="bullet-point small-pad"> 
                          {lineItem.text}
                       </li>
                   )
               })}
+              <Tagline tagline={tagline} />
               </ul>
             </div>
       </section>

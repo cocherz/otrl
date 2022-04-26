@@ -54,30 +54,39 @@ const CrossSVG = () => {
 
 const BurgerMenu = ({ setIsNavExpanded, isNavExpanded }) => {
   return (
-    <section className="mobile-nav">
+    <section className="mobile-nav" alt="menu">
       <button
         className="hamburger"
+        alt="menu"
         onClick={() => {
           setIsNavExpanded(!isNavExpanded);
         }}
+        
       >
         {isNavExpanded ? <BurgerSVG /> : <CrossSVG />}
+        
       </button>
       <div
         className={isNavExpanded ? "mobile-menu expanded" : "mobile--menu"}
+        
       ></div>
     </section>
   );
 };
 
 export const MobileMenu = ({ menuLink, i }) => {
+  console.log(menuLink.link.url);
   return (
+
     <PrismicLink field={menuLink.link} key={i}>
-      <li  className="mobile-menu-item" >
+      <div  className="mobile-menu-item" >
         <PrismicText field={menuLink.label} />
-        <span> {">"} </span>
-      </li>
+        <span aria-hidden="true"> <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 9L4.64645 5.35355C4.84171 5.15829 4.84171 4.84171 4.64645 4.64645L1 1" stroke="#D1D5DB" stroke-width="1.5" stroke-linecap="round"/>
+</svg></span>
+      </div>
     </PrismicLink>
+
   );
 };
 
@@ -93,7 +102,7 @@ export const MobileNav = ({ menuDoc }) => {
         <div
           className={isNavExpanded ? "mobile-menu expanded" : "mobile--menu"}
         >
-          <div className="mobile-menu-coontainer">
+          <div className="mobile-menu-container">
             <ul className="mobile-menu-items">
               {menuDoc.data.menu_links.map((menuLink, i) => (
                 <MobileMenu menuLink={menuLink} key={i} />

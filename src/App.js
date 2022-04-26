@@ -9,6 +9,8 @@ import { Contact } from "./pages/Contact.test";
 import { TestPage } from "./pages/testpage.test";
 import { JobPost } from "./pages/JobPost";
 import { NotFound } from "./pages/NotFound";
+import { CookiePolicy } from "./pages/footer_pages/CookiePolicy";
+import { PrivacyPolicy } from "./pages/footer_pages/PrivacyPolicy";
 import { Preview } from "./pages/Preview";
 import { WhoWeAre } from "./pages/WhoWeAre";
 
@@ -29,6 +31,8 @@ export const App = () => {
           <Route path="/contact-us" element={<Contact />} />
           <Route path="/careers/:uid" element={<JobPost />} />
           <Route path="/preview" element={<Preview />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -10,7 +10,7 @@ footer {
   margin-bottom: 3.75rem;
 }
 
-h2.page-heading {
+h2.page-heading, h2.page-heading-center {
   width: 100%;
   text-align: center;
 }
@@ -19,11 +19,33 @@ h2.subheading {
   padding-left: 20px;
 }
 
+.bold{
+  font-size: 18px;
+  font-weight: 700;
+}
+
+
 .centered {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.small-icon-container{
+  width: 22px;
+}
+.align-img{
+  display: flex;
+  align-items:center;
+}
+.align-svg{
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  font-size: inherit;
+  color: inherit;
+  vertical-align: -0.125em;
+  fill: currentColor;
 }
 
 .margin-centered {
@@ -39,6 +61,10 @@ h2.subheading {
 }
 .copy-container-small {
   max-width: 1000px;
+}
+
+.small-pad{
+  padding: 10px;
 }
 
 .desktop-hidden {
@@ -160,7 +186,6 @@ button.primary-button:hover {
   margin-right: auto;
 }
 .banner-title {
-  color: #010101;
   font-size: 24px;
   width: 100%;
   text-align: center;
@@ -177,6 +202,11 @@ button.primary-button:hover {
 }
 .banner-button:hover {
   background: #c8c9cb;
+}
+
+.key-points-container{
+  display: flex;
+  flex-wrap: wrap;
 }
 
 /* 404 error page */
@@ -270,10 +300,7 @@ button.primary-button:hover {
 }
 
 .about-us-points {
-  display: flex;
-  min-width: 380px;
-  flex-wrap: wrap;
-  justify-content: start;
+  max-width: 440px;
 }
 
 .bullet-point {
@@ -507,7 +534,7 @@ button.primary-button:hover {
   height: 80px;
 }
 
-.background {
+.background, .heading-background, .activeRoles, .active-jobs {
   background-color: #f8fbff;
 }
 
@@ -634,7 +661,6 @@ input[type="file"] {
 }
 
 
-
 @keyframes lds-ripple {
   0% {
     top: 28px;
@@ -669,19 +695,44 @@ input[type="file"] {
   .our-service-card {
     margin: auto;
   }
+  
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   h1 {
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 29px;
   }
   h2 {
-    font-size: 26px;
+    font-family: 'DM Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 22px;
+line-height: 40px;
   }
   h3 {
-    font-size: 18px;
+    font-family: 'DM Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 22px;
+line-height: 40px;
   }
+  p{
+    font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 22px;
+  }
+h2.page-heading{
+  text-align: left;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+
+
+
   .content-section {
     margin-bottom: 2rem;
   }
@@ -692,13 +743,12 @@ input[type="file"] {
     width: 100%;
     margin-top: 20px;
   }
-
-
   .site-header {
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 20px;
-
+    padding: 30px 30px;
+    border-bottom: 2px solid #F3F4F6;
+    z-index: 10;
   }
 
   .hamburger {
@@ -712,8 +762,9 @@ input[type="file"] {
     background: red;
   }
 
-  .mobile-menu-coontainer {
+  .mobile-menu-container {
     position: absolute;
+    margin-top: 20px;
     left: 0px;
     background-color: white;
     width: 100vw;
@@ -722,7 +773,7 @@ input[type="file"] {
 
   .mobile-menu-item {
     font-weight: 700;
-    padding: 20px;
+    padding: 20px 30px;
   }
   .mobile-menu-item span {
     float: right;

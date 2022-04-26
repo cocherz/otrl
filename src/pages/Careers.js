@@ -37,11 +37,11 @@ export const Careers = () => {
   if (careers && menu && jobs && icons) {
     return (
       <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={footer}>
-        <section className="activeRoles">
-          <h2 className="page-heading">
+        <section className="activeRoles bottom-padding">
+          <h2 className="page-heading heading-background">
             <PrismicText field={careers.data.current_vacancies} />
           </h2>          
-          <div className="active-jobs">
+          <div className="active-jobs content">
             {jobs.map((job, i) => (
               <ActiveJobs job={job} key={i} icons={icons} />
             ))}
