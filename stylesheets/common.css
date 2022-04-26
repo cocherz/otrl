@@ -1,0 +1,145 @@
+/* dm-sans-regular - latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+  url('../fonts/DMSans-Regular.ttf') format('ttf')
+}
+/* dm-sans-italic - latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local(''),
+  url('../fonts/DMSans-Italic.ttf') format('ttf')
+
+}
+/* dm-sans-500 - latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: local(''),
+  url('../fonts/DMSans-Medium.ttf') format('ttf')
+}
+/* dm-sans-500italic - latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 500;
+  src: url('../fonts/dm-sans-v10-latin-500italic.eot'); /* IE9 Compat Modes */
+  src: local(''),
+    url('../fonts/DMSans-Italic.ttf') format('ttf')
+}
+/* dm-sans-700 - latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+  url('../fonts/DMSans-Bold.ttf') format('ttf')
+}
+/* dm-sans-700italic - latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local(''),
+       url('../fonts/DMSans-BoldItalic.ttf') format('ttf')
+}
+
+
+
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+::selection {
+  background: #fff7c7; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #fff7c7; /* Gecko Browsers */
+}
+
+/*
+ * Globals
+ */
+body {
+  color: #72767b;
+  font-family: DM Sans , sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.4;
+  line-height: 28px;
+  overflow-x: hidden; 
+}
+a {
+  color: #1F2937;
+  text-decoration: none;
+}
+p a {
+  text-decoration: underline;
+}
+
+p.small{
+font-size: 14px;
+line-height: 22px;
+}
+
+h1 {
+
+  font-size: 42px;
+  font-weight: normal;
+  color: #000000;
+  line-height: 52px;
+  letter-spacing: 1.14;
+  margin-bottom: 1rem;
+}
+h2 {
+  color: #000000;
+
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 80px;
+  letter-spacing: 0px;
+}
+h2 a {
+  margin-bottom: 1rem;
+  color: #484d52;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.85;
+  line-height: 42px;
+}
+
+h3,
+h3 a {
+  color: #000000;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0px;
+  text-align: left;  
+}
+
+h4{
+  font-weight: 700;
+  color: #000000;
+  padding-bottom: 20px;
+}
+
+p {
+  margin-bottom: 2rem;
+}
+pre,
+
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+img {
+  max-width: 100%;
+}
