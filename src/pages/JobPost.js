@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useSinglePrismicDocument, usePrismicDocumentByUID } from "@prismicio/react";
 import { Layout } from "../components/Layout";
-import { JobDescription } from "../components/job_page/JobDescription";
+import { JobPageContent } from "../components/job_page/JobPageContent";
 import { JobSummary } from "../components/job_page/JobSummary";
 import { NotFound } from "./NotFound";
 import { useParams } from "react-router-dom";
@@ -33,8 +33,8 @@ export const JobPost = () => {
         <div className="background">
           <section className="job-content content-section page-heading">
             <JobSummary job={job.data} icons={icons.data} />
-            <PrimaryButton classNames={"wide-btn desktop-hidden"} redirect={"/contact-us"} copy={"Apply"} />
-            <JobDescription job={job.data} icons={icons.data} />
+            <PrimaryButton classNames={"wide-btn desktop-hidden"} copy={"Apply"} clickAction={(e) => document.getElementById("unsubmitted").scrollIntoView()}/>
+            <JobPageContent job={job.data} icons={icons.data} />
           </section>
           <OtherRole OtherRoleCopy={careers.data.banner_copy} OtherRoleButtonCopy={careers.data.banner_button_copy} />
         </div>

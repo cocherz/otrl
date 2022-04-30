@@ -8,7 +8,7 @@ export const ContactUsCopy = ({ header, subHeader }) => {
       <h1 className="paddingDownMed">
         <PrismicText field={header} />
       </h1>
-      <div className="paddingDownLarge">
+      <div className="paddingDownMed">
       <PrismicText field={subHeader} />
       </div>
     </section>

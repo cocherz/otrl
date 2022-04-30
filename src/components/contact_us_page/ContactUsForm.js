@@ -1,4 +1,6 @@
 import React from "react";
+// import './styles.scss'
+
 
 export class ContactUsForm extends React.Component {
   constructor(props) {
@@ -23,7 +25,7 @@ export class ContactUsForm extends React.Component {
           First Name *
           <br />
           <input
-            className="input-field input-field-wide"
+            className="input-field input-field-wide hello"
             name="firstName"
             type="text"
             checked={this.state.firstName}

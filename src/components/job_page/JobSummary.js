@@ -3,7 +3,7 @@ import React from "react";
 
 export const JobSummary = ({ job, i, icons }) => {
   return (
-    <section className="jobHeaders">
+    <section className="jobHeaders section-container">
       <img className="jobImageLarge mobile-hidden" src={job.job_image.url} alt={job.job_image.src}/>
       <section className="jobCopy">
         <h2 className="subheading">

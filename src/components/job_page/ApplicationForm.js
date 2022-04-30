@@ -18,7 +18,7 @@ export class ApplicationForm extends React.Component {
 
   render() {
     return (
-      <form className="application-form">
+      <form  className="application-form">
         <div className="bottom-padding">
           <h3> Application </h3>
         </div>

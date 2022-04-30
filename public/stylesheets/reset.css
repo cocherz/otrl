@@ -106,9 +106,11 @@ section {
 }
 body {
   line-height: 1;
-  
+  overflow-x: hidden;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 ol,
 ul {
   list-style: none;

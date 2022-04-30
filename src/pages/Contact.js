@@ -31,27 +31,10 @@ export const Contact = () => {
   }, [contactState.state]);
 
   if (contact && menu) {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
     return (
       <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={footer}>
         <div className="background">
-          <div className="padding-container">
-            <section className="contact-us-container content-section ">
+            <section className="contact-us-container content-section-tb ">
               <div className="copy-and-images">
                 <ContactUsCopy
                   header={contact.data.header_copy}
@@ -61,7 +44,6 @@ export const Contact = () => {
               </div>
               <ContactUsForm />
             </section>
-          </div>
         </div>
       </Layout>
     );

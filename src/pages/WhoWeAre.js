@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { useSinglePrismicDocument } from "@prismicio/react";
+import { PrismicText, useSinglePrismicDocument } from "@prismicio/react";
 import { ClientFeedbackSlider, OurClients } from "../components/structure/common";
 import { Layout } from "../components/Layout";
 import { Bio } from "../components/about_us_page/bio";
@@ -28,12 +28,20 @@ export const WhoWeAre = () => {
   if (home && menu && biopic && footer) {
     return (
       <Layout wrapperClass="page-content homepage" menuDoc={menu} footerDoc={footer}>
-
         <AboutUsBanner banner={home.data.homepage_banner[0]} />
-
-        <section className="key-points-container content-section">
-          <KeyPoints title={home.data.who_we_are} copy={home.data.who_we_are_bullets} />
-          <KeyPoints title={home.data.what_we_do} copy={home.data.what_we_do_bullets} tagline={home.data.tagline} />
+        <section className="key-points-container section-container content-section">
+          <div className="bullet-points">
+            <h3>
+              <PrismicText field={home.data.who_we_are} />
+            </h3>
+            <KeyPoints title={home.data.who_we_are} copy={home.data.who_we_are_bullets} />
+          </div>
+          <div className="bullet-points">
+            <h3> 
+            <PrismicText field={home.data.what_we_do} />
+            </h3>
+            <KeyPoints title={home.data.what_we_do} copy={home.data.what_we_do_bullets} tagline={home.data.tagline} />
+          </div>
         </section>
         <ClientFeedbackSlider />
         <Bio biopic={biopic.data.team_member} />

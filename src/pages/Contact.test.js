@@ -28,9 +28,9 @@ export const Contact = () => {
   if (contact && menu) {
     return (
       <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={footer}>
-        <div className="background">
-          <div className="padding-container">
-            <section className="contact-us-container content-section ">
+        <div className="background section-container-tb">
+          
+            <section className="contact-us-container margin-centered">
               <div className="contact-us-a">
                 {" "}
                 <ContactUsCopy
@@ -42,10 +42,11 @@ export const Contact = () => {
                 <ClientImages image={contact.data} />{" "}
               </div>
               <div className="contact-us-c">
+                <div className="container-test"> 
                 <ContactUsForm />{" "}
+                </div>
               </div>
             </section>
-          </div>
         </div>
       </Layout>
     );

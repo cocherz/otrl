@@ -1,11 +1,11 @@
 import React from "react";
 import { JobDesc } from "./JobDesc";
 import { ShareVacany } from "./ShareVacancy";
-import { ApplicationForm } from "./ApplicationForm";
+import { ApplicationForm } from "./ApplicationForm.test";
 
-export const JobDescription = ({ job, icons }) => {
+export const JobPageContent = ({ job, icons }) => {
   return (
-    <div className="job-page-container">
+    <section className="job-page-container">
       <div className="vLine mobile-hidden"></div>
       <div className="job-desc">
         <JobDesc job={job} className="job-desc" />
@@ -13,8 +13,8 @@ export const JobDescription = ({ job, icons }) => {
 
       <div className="share-and-apply">
         <ShareVacany icons={icons} />
-        <ApplicationForm />
+        <ApplicationForm jobTitle={job.job_title[0].text}/>
       </div>
-    </div>
+    </section>
   );
 };

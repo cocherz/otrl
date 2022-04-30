@@ -41,7 +41,6 @@ const ContactInfo = ({ footerDoc }) => {
 };
 
 const FooterLinkList = ({ lists }) => {
-  console.log(lists)
   return (
     <div>
       <a href={lists.link.url ? lists.link.url : "/"+lists.link.uid }>
