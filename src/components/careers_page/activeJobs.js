@@ -4,31 +4,31 @@ export const ActiveJobs = ({ job, i, icons }) => {
   return (
     <h5 className="active-job-container">
       <a href={"careers/" + job.uid}>
-      <img className="jobImage" src={job.data.job_image.url} alt={job.data.job_image.url} />
-      <div className="jobTitle">
+      <img className="job-img" src={job.data.job_image.url} alt={job.data.job_image.url} />
+      <div className="job-title">
         <h3>{job.data.job_title[0].text}</h3>
       </div>
       <div className="pills-list">
-        <div className="jobPill listPill align-img">
+        <div className="pill align-img">
           <div className="small-icon-container">
             <img src={icons.data.location.url} alt={icons.data.location.alt} />
           </div>
           {job.data.location}
         </div>
-        <div className="jobPill listPill align-img">
+        <div className="pill align-img">
           <div className="small-icon-container">
             <img src={icons.data.location.url} alt={icons.data.location.alt} />
           </div>
           {job.data.office_or_remote}
         </div>
-        <div className="jobPill listPill align-img">
+        <div className="pill align-img">
           <div className="small-icon-container">
               <img src={icons.data.coins.url} alt={icons.data.coins.alt} />
             </div>
             {job.data.salary[0].text}{" "}
         </div>
 
-        <div className="jobPill listPill align-img">
+        <div className="pill align-img">
           <div className="small-icon-container">
             <img src={icons.data.person.url} alt={icons.data.person.alt} />
           </div>
@@ -37,7 +37,7 @@ export const ActiveJobs = ({ job, i, icons }) => {
       </div>
 
       
-        <b className="purpleText bold">Find out more and apply </b>{" "}
+        <b className="purple-text bold">Find out more and apply </b>{" "}
         <svg className="align-svg" width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             fill-rule="evenodd"

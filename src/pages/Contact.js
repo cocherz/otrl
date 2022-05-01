@@ -31,6 +31,7 @@ export const Contact = () => {
   }, [contactState.state]);
 
   if (contact && menu) {
+    console.log(contact);
     return (
       <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={footer}>
         <div className="background">

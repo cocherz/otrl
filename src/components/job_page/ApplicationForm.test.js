@@ -12,28 +12,34 @@ export const ApplicationForm = ({ jobTitle }) => {
     let valid = true;
     if (firstName == null || firstName == "") {
       document.getElementById("first-name-error").style.display = "block";
+      document.getElementById("firstName").style.border = "1px solid red";
       valid = false;
     } else {
       document.getElementById("first-name-error").style.display = "none";
+      document.getElementById("firstName").style.border = "1px solid #d1d5db";
     }
     if (lastName == null || lastName == "") {
       document.getElementById("last-name-error").style.display = "block";
+      document.getElementById("lastName").style.border = "1px solid red";
       valid = false;
     } else {
       document.getElementById("last-name-error").style.display = "none";
+      document.getElementById("lastName").style.border = "1px solid #d1d5db";
     }
     if (email == null || email == "" || !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       document.getElementById("email-error").style.display = "block";
+      document.getElementById("email").style.border = "1px solid red";
       valid = false;
     } else {
       document.getElementById("email-error").style.display = "none";
+      document.getElementById("email").style.border = "1px solid #d1d5db";
     }
     if (valid === true) {
       document.getElementById("unsubmitted").style.display = "none";
       document.getElementById("submitted").style.display = "block";
       gaEvent('Applied-for-job', "job application")
     }
-    return true;
+    return valid;
   };
 
   const handleSubmit = (e) => {
@@ -42,8 +48,7 @@ export const ApplicationForm = ({ jobTitle }) => {
   };
 
   return (
-    <section>
-      <form
+          <form
         id="unsubmitted"
         onSubmit={(e) => {
           handleSubmit(e);
@@ -84,7 +89,7 @@ export const ApplicationForm = ({ jobTitle }) => {
             <label htmlFor="file-upload">
               <strong>
                 {" "}
-                <span>Drop your resume here </span> <span className="purpleText cursorpointer"> or browse </span>{" "}
+                <span>Drop your resume here </span> <span className="purple-text cursorpointer"> or browse </span>{" "}
               </strong>
               <br />
               <span>Max. file size: 4MB (pdf, doc, docx) </span>
@@ -92,14 +97,9 @@ export const ApplicationForm = ({ jobTitle }) => {
             <input id="file-upload" type="file" />
           </div>
         </label>
-        <div className="submitCTA ">
-          <input type="submit" value="Submit" />
+        <div className="submitCTA">
+          <button type="submit" value="Submit" className="primary-button wide-btn"> Submit </button>
         </div>
       </form>
-      <div id="submitted" className="application-form">
-        {" "}
-        <h3> Thanks for applying for our {jobTitle} role! </h3>
-      </div>
-    </section>
   );
 };

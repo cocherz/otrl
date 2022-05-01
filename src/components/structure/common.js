@@ -96,7 +96,7 @@ export const ClientFeedbackSlider = () => {
                   <PrismicText field={feedback.client_feedback} />
                   <span className="quoteMarks"> " </span>
                 </p>
-                <div className="title_job_feedback">
+                <div className="title-job-feedback">
                   <PrismicText field={feedback.client_name} />
                   <span> | </span>
                   <PrismicText field={feedback.client_company_name} />

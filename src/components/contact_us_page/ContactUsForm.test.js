@@ -12,32 +12,41 @@ export const ContactUsForm = ({}) => {
 
   const gaEvent = GATracker('Contact-form')
 
-
-
   const isValid = () => {
     let valid = true;
     if (firstName == null || firstName == "") {
       document.getElementById("first-name-error").style.display = "block";
+      document.getElementById("firstName").style.border = "1px solid red";
       valid = false;
     } else {
       document.getElementById("first-name-error").style.display = "none";
+      document.getElementById("firstName").style.border = "1px solid #d1d5db";
     }
     if (lastName == null || lastName == "") {
       document.getElementById("last-name-error").style.display = "block";
+      document.getElementById("lastName").style.border = "1px solid red";
       valid = false;
     } else {
       document.getElementById("last-name-error").style.display = "none";
+      document.getElementById("lastName").style.border = "1px solid #d1d5db";
+
     }
     if (email == null || email == "" || !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       document.getElementById("email-error").style.display = "block";
+      document.getElementById("email").style.border = "1px solid red";
       valid = false;
     } else {
       document.getElementById("email-error").style.display = "none";
+      document.getElementById("email").style.border = "1px solid #d1d5db";
+
     }
     if (message == null || message == "" || message.length >= 5000) {
         document.getElementById("message-error").style.display = "block";
+        document.getElementById("message").style.border = "1px solid red";
+        valid = false;
     }else {
         document.getElementById("message-error").style.display = "none";
+        document.getElementById("message").style.border = "1px solid #d1d5db";
       }
     if (valid === true) {
       document.getElementById("unsubmitted").style.display = "none";
@@ -107,14 +116,14 @@ export const ContactUsForm = ({}) => {
       <label className="contact-us-text" aria-label="What can we help you with? Max. 5000 characters">
         <span aria-hidden="true"> What we help you with? * <span> Max. 5000 characters</span></span>
 
-        <textarea className="input-field input-field-wide input-field-tall" name="message" type="text" value={message} onChange={(e) => setMessage(e.target.value)}/>
+        <textarea id="message" className="input-field input-field-wide input-field-tall" name="message" type="text" value={message} onChange={(e) => setMessage(e.target.value)}/>
       </label>
       <h5 id="message-error" className="error-message" aria-label="Email is invalid">
         {" "}
         * invalid{" "}
       </h5>
       <div className="submitCTA ">
-        <input type="submit" value="Submit" />
+        <button type="submit" value="Submit" className="primary-button wide-btn"> Submit </button>
       </div>
     </form>
     <section className="contact-us-form mobile-outline" id="submitted" > 

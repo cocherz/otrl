@@ -1,5 +1,6 @@
 import React from "react";
 import { PrismicText } from "@prismicio/react";
+import { PrimaryButton } from "../structure/common";
 
 /**
  * Homepage banner component
@@ -23,7 +24,7 @@ export const Bio = ({ biopic }) => (
                 <span aria-hidden="true" > | </span>
                 <PrismicText field={member.job_title} />
               </div>
-              <div className="bioCopy">
+              <div className="small-text">
                 <PrismicText field={member.bio_copy} />
               </div>
             </section>
@@ -31,9 +32,8 @@ export const Bio = ({ biopic }) => (
         ))}
       </ul>
     </div>
-
     <a href="/careers" className="joinButton">
-      <button className="joinTheTeam purpleCTA">Join the team</button>
+      <PrimaryButton classNames="purpleCTA" copy="Join the team" redirect="/careers"/>
     </a>
   </div>
 );

@@ -3,7 +3,7 @@ import { PrismicRichText } from "@prismicio/react";
 
 export const Tagline = ({ tagline }) => {
   return (
-    <div className="purpleText small-pad">
+    <div className="purple-text small-pad">
       <PrismicRichText field={tagline} />
     </div>
   );

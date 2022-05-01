@@ -49,7 +49,7 @@ export const JobDesc = ({ job }) => {
       </div>
 
       <PrismicRichText field={job.title_tools} />
-      <div className="techPills">
+      <div className="techPills" id="pills">
         {job.technologies.map((technology, i) => (
           <TechPill tech={technology} key={i} />
         ))}

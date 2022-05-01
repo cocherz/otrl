@@ -63,7 +63,7 @@ export class ApplicationForm extends React.Component {
           <br />
           <div className="custom-file-upload" >
           <label htmlFor="file-upload">
-                <strong> <span>Drop your resume here </span> <span className="purpleText cursorpointer"> or browse </span> </strong>
+                <strong> <span>Drop your resume here </span> <span className="purple-text cursorpointer"> or browse </span> </strong>
                 <br />
                 <span>Max. file size: 4MB (pdf, doc, docx) </span>
           </label>

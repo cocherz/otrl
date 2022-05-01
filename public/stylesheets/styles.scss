@@ -1,4 +1,13 @@
 /* General */
+
+:root {
+    --main-bg-color: #f8fbff;
+    --light-bg-color: #ffffff;
+    --main-purple: #5b21b6;
+    --light-purple: #7436d9;
+    --light-text-hover: #72767b;
+}
+
 .container,
 .content-section,
 header,
@@ -22,7 +31,7 @@ h2.subheading {
     line-height: 50px;
     padding-left: 20px;
 }
-.bolden{
+.bolden {
     font-weight: 700;
 }
 
@@ -31,11 +40,11 @@ h2.subheading {
     font-weight: 700;
 }
 
-.left-marg{
+.left-marg {
     margin-left: 20px;
 }
 
-.bottom-padd{
+.bottom-padd {
     padding-bottom: 20px;
 }
 
@@ -66,10 +75,10 @@ h2.subheading {
     margin: auto;
 }
 .section-container-tb {
-   padding: 20px 0px;
+    padding: 20px 0px;
 }
 
-.section-container-lr{
+.section-container-lr {
     padding: 0px 20px;
 }
 
@@ -91,7 +100,7 @@ h2.subheading {
 
 /* Header */
 
-.desktopNav {
+.desktop-nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -106,11 +115,17 @@ h2.subheading {
 }
 
 .site-header nav a:hover {
-    color: #72767b;
+    color: var(--light-text-hover);
 }
 
-button.primary-button {
-    background: #5b21b6;
+footer a:hover{
+    color: var(--light-text-hover);
+}
+
+button.primary-button,
+.application-form .submitCTA input,
+.contact-us-form .submitCTA input {
+    background: var(--main-purple);
     border: none;
     color: white;
     padding: 15px 32px;
@@ -118,15 +133,14 @@ button.primary-button {
     font-weight: 700;
     text-align: center;
     cursor: pointer;
-    font-weight: 700;
     border-radius: 10px;
 }
 button.primary-button:hover {
-    background: #7436d9;
+    background: var(--light-purple)
 }
 .wide-btn {
-    width: 90%;
-    margin: 20px 20px;
+    width: 100%;
+    margin: 0px 0px;
 }
 
 .site-header,
@@ -143,9 +157,6 @@ button.primary-button:hover {
 .logo {
     padding-right: 40px;
 }
-.contact-us-btn {
-    margin-left: auto;
-}
 
 /* Home page section */
 
@@ -159,7 +170,7 @@ button.primary-button:hover {
 .our-service-card {
     width: 302px;
     height: 308px;
-    background: #ffffff;
+    background: var(--light-bg-color);
     box-shadow: 0px 4px 30px rgba(1, 0, 66, 0.08);
     border-radius: 20px;
     padding: 20px;
@@ -209,7 +220,7 @@ button.primary-button:hover {
     line-height: 70px;
 }
 .banner-button {
-    background: #ffffff;
+    background: var(--light-bg-color);
     border-radius: 7px;
     color: #484d52;
     font-size: 14px;
@@ -237,7 +248,7 @@ button.primary-button:hover {
 /* team bio */
 
 .meet_the_team_section {
-    background: #f9fafb;
+    background: var(--main-bg-color);
     height: fit-content;
 }
 
@@ -245,16 +256,16 @@ button.primary-button:hover {
     text-align: center;
     padding: 20px;
 }
- .flex {
+.flex {
     display: flex;
-} 
+}
 
 .team_member {
     margin: 10px;
-    background: #ffffff;
+    background: var(--light-bg-color);
     width: 264px;
     height: 365px;
-    background: #ffffff;
+    background: var(--light-bg-color);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 20px;
@@ -289,23 +300,12 @@ button.primary-button:hover {
     font-weight: 700;
 }
 
-.bioCopy {
+.small-text {
     text-align: center;
     font-style: normal;
     font-weight: 400;
     font-size: 11px;
     line-height: 14px;
-}
-
-.joinTheTeam {
-    background: #5b21b6;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    cursor: pointer;
-    font-weight: 700;
-    border-radius: 10px;
 }
 
 .joinButton {
@@ -320,56 +320,56 @@ button.primary-button:hover {
 }
 
 .bullet-point {
-    list-style: circle;
+    list-style: disc;
 }
 
 /* Footer  */
 
-.footerContainer {
+.footer-container {
     border-top: 1px solid #f3f4f6;
     padding: 20px;
 }
 
-.footerContentContainer {
+.footer-content-container {
     display: flex;
     padding-bottom: 40px;
 }
 
-.socialsContainer ul {
+.socials-container ul {
     display: flex;
 }
 
-.socialImage {
+.footer-social-image {
     padding-right: 10px;
 }
 
-.footerLinksArea {
+.footer-links-area {
     display: flex;
     flex-wrap: wrap;
     text-align: left;
 }
 
-.footerTitle {
+.footer-title {
     color: #1f2937;
 }
 
-.footerLinks {
+.footer-links {
     font-size: 14px;
     font-weight: 100;
 }
 
-.linksSection {
+.footer-links-section {
     padding: 0 0 20px 5rem;
 }
 
-.footerCopy {
+.footer-copy {
     text-align: right;
     font-weight: 400;
     font-size: 11px;
     line-height: 14px;
 }
 
-.footerContactDetails {
+.footer-contact-details {
     text-align: left;
 }
 
@@ -381,29 +381,18 @@ button.primary-button:hover {
     padding-bottom: 66px;
 }
 
-.footer-btn-copy {
-    border: none;
-    color: #5b21b6;
-    background: none;
-    cursor: pointer;
-    font-weight: 700;
-}
 .footer-contact-section {
     max-width: 272px;
 }
 
 /* Contact Us page */
-.padding-container {
-    padding: 20px;
-}
 
 .contact-us-container {
-    background: #ffffff;
+    background: var(--light-bg-color);
     box-shadow: 0px 10px 40px rgba(0, 7, 70, 0.15);
     border-radius: 20px;
     padding: 42px;
     width: 920px;
-
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: auto auto;
@@ -421,7 +410,7 @@ button.primary-button:hover {
     grid-row: 1;
 }
 
-.client-section h3{
+.client-section h3 {
     padding-bottom: 20px;
 }
 
@@ -446,14 +435,12 @@ button.primary-button:hover {
     padding-left: 20px;
 }
 
-.listPill {
-    width: max-content;
-}
 .pills-list {
     padding: 10px 0px;
 }
 
-.jobPill {
+.pill {
+    width: max-content;
     background: #f3f4f6;
     border-radius: 6px;
     margin: 0 10px 10px 0;
@@ -472,7 +459,7 @@ button.primary-button:hover {
 }
 
 .active-job-container {
-    background: #ffffff;
+    background: var(--light-bg-color);
     box-shadow: 0px 4px 30px rgba(1, 0, 66, 0.08);
     border-radius: 20px;
     padding: 30px;
@@ -480,7 +467,8 @@ button.primary-button:hover {
     height: 407px;
     margin: 15px;
 }
-.jobImage {
+.job-img {
+    height: 80px;
     max-width: 80;
     display: flex;
     margin: auto;
@@ -502,7 +490,7 @@ button.primary-button:hover {
     padding-bottom: 20px;
 }
 .buttonSecondary {
-    border: 2px solid #ffffff;
+    border: 2px solid var(--light-bg-color);
     box-sizing: border-box;
     border-radius: 10px;
     padding: 10px 20px;
@@ -515,11 +503,9 @@ button.primary-button:hover {
 }
 
 .buttonSecondary:hover {
-    background-color: #5b21b6;
+    background-color: var(--main-purple);
 }
-.companyQuotes {
-    background-color: #ffffff;
-}
+
 .CareerQuote {
     display: flex;
 }
@@ -534,7 +520,7 @@ button.primary-button:hover {
     padding: 0px 0px 30px 0;
 }
 
-.quoterInfo {
+.quoter-info {
     display: flex;
     padding-bottom: 20px;
 }
@@ -544,21 +530,21 @@ button.primary-button:hover {
 }
 
 /* Job posting page */
-.jobHeaders {
+.job-headers {
     display: flex;
     width: 100%;
     padding-top: 50px;
 }
 
-.jobImageLarge {
+.job-img-large {
     height: 80px;
 }
 
 .background,
 .heading-background,
-.activeRoles,
+.active-roles,
 .active-jobs {
-    background-color: #f8fbff;
+    background-color: var(--main-bg-color);
 }
 
 .job-page-container {
@@ -585,7 +571,7 @@ button.primary-button:hover {
 
 .techPill {
     padding: 8px 15px;
-    background: #ffffff;
+    background: var(--light-bg-color);
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
     border-radius: 30px;
     margin-right: 12px;
@@ -595,6 +581,7 @@ button.primary-button:hover {
 .share-and-apply {
     padding-left: 120px;
 }
+
 .share-me {
     padding-bottom: 48px;
 }
@@ -615,7 +602,7 @@ button.primary-button:hover {
 .application-form {
     width: 354px;
     padding: 20px;
-    background: #ffffff;
+    background: var(--light-bg-color);
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
 }
@@ -623,45 +610,34 @@ button.primary-button:hover {
     height: 124px;
 }
 
-textarea{
+textarea {
     resize: none;
     padding: 10px;
 }
 
-.contact-us-form label input, .contact-us-form label textarea,  .application-form label input{
-    width: 100%;
+form label{
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-us-form label input,
+.contact-us-form label textarea,
+.application-form label input {
     min-height: 40px;
-    background: #ffffff;
+    background: var(--light-bg-color);
     border-radius: 8px;
     border: 1px solid #d1d5db;
     margin-bottom: 20px;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box; /* Firefox, other Gecko */
-    box-sizing: border-box; /* Opera/IE 8+ */
 }
-
 
 .contact-us-form {
     padding-left: 50px;
 }
 
-.application-form .submitCTA input,
-.contact-us-form .submitCTA input {
-    background: #5b21b6;
-    border: none;
-    color: white;
-    width: 100%;
-    padding: 15px 32px;
-    text-align: center;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 700;
-    border-radius: 10px;
-}
 input[type="file"] {
     display: none;
 }
-input[type=text] {
+input[type="text"] {
     padding-left: 10px;
 }
 
@@ -673,7 +649,7 @@ input[type=text] {
 }
 
 .custom-file-upload {
-    background: #ffffff;
+    background: var(--light-bg-color);
     border: 1px dashed #d1d5db;
     border-radius: 6px;
     cursor: pointer;
@@ -686,57 +662,39 @@ input[type=text] {
     cursor: pointer;
 }
 
-.purpleText {
-    color: #5b21b6;
+.purple-text {
+    color: var(--main-purple);
+}
+a .purple-text:hover {
+    color: var(--light-purple);
 }
 
-.contact-us-text span span{
+.contact-us-text span span {
     float: right;
-}
-
-
-
-
-@keyframes lds-ripple {
-    0% {
-        top: 28px;
-        left: 28px;
-        width: 0;
-        height: 0;
-        opacity: 1;
-    }
-    100% {
-        top: -1px;
-        left: -1px;
-        width: 58px;
-        height: 58px;
-        opacity: 0;
-    }
 }
 
 /* Media Queries */
 @media (max-width: 1060px) {
-
     .job-page-container {
         display: block;
     }
     .share-and-apply {
         display: flex;
         flex-direction: column-reverse;
+        align-self: baseline;
         padding: 0px;
         width: 100%;
     }
 
-    .vLine{
+    .vLine {
         display: none;
     }
-    
 
     .application-form {
-        width: 90%;
+        width: 95%;
         margin: auto;
-    }
-   
+    } 
+
     .contact-us-container {
         box-shadow: 0px 0px 0px rgba(255, 255, 255, 0.15);
         border-radius: 0;
@@ -747,13 +705,12 @@ input[type=text] {
         width: 100%;
     }
 
-    .contact-us-b{
-        order: 2; 
+    .contact-us-b {
+        order: 2;
     }
 
-
     .mobile-outline {
-        background: #ffffff;
+        background: var(--light-bg-color);
         box-shadow: 0px 10px 40px rgba(0, 7, 70, 0.15);
         border-radius: 20px;
     }
@@ -770,7 +727,7 @@ input[type=text] {
     .contact-us-b,
     .contact-us-a {
         padding: 20px;
-        background: #f8fbff;
+        background: var(--main-bg-color);
     }
 }
 @media (max-width: 800px) {
@@ -812,7 +769,7 @@ input[type=text] {
     h2.page-heading {
         text-align: left;
         margin: 20px;
-        background-color: #ffffff;
+        background-color: var(--light-bg-color);
     }
 
     .content-section {
@@ -828,7 +785,7 @@ input[type=text] {
     .site-header {
         justify-content: space-between;
         align-items: center;
-        
+
         padding: 10px 30px;
         border-bottom: 2px solid #f3f4f6;
     }
@@ -854,7 +811,7 @@ input[type=text] {
     }
 
     .mobile-menu-item {
-        padding: 20px 30px;
+        padding: 20px 10px;
     }
     .mobile-menu-item span {
         float: right;
@@ -900,31 +857,31 @@ input[type=text] {
         float: none;
     }
 
-    .footerContentContainer {
+    .footer-content-container {
         display: block;
     }
-    .footerLinksArea {
+    .footer-links-area {
         padding-top: 20px;
         display: grid;
         grid-template-columns: repeat(2, 50%);
     }
-    .linksSection {
+    .footer-links-section {
         padding: 40px 0px 0px 0px;
     }
 
     .footer-btn-copy {
-        background: #5b21b6;
+        background: var(--main-purple);
         border: none;
-       
+
         color: white;
-        padding: 15px  32px;
+        padding: 15px 32px;
         text-align: center;
         cursor: pointer;
         font-weight: 700;
         border-radius: 10px;
         margin: 10px 10px 0px 10px;
     }
-  
+
     /* carrers ppage */
 
     .CareerQuote {
@@ -933,14 +890,11 @@ input[type=text] {
         flex-wrap: wrap;
         width: 100%;
     }
-    .companyQuotes {
-        background-color: #f8fbff;
-    }
 
     .active-jobs {
         display: block;
     }
-    .jobImage {
+    .job-img {
         visibility: hidden;
         display: none;
     }
@@ -961,20 +915,20 @@ input[type=text] {
         padding: 0;
     }
 
-    .client-images{
+    .client-images {
         display: flex;
         align-items: center;
+        overflow-x: hidden;
     }
 }
 
 /* client and partners styling */
 
-.slick-track{
+.slick-track {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
 }
-
 
 .client-images-carosel {
     padding: 20px;
@@ -999,12 +953,14 @@ input[type=text] {
 
 /* feedback */
 
-.title_job_feedback {
+.title-job-feedback {
     display: flex;
     width: 100%;
     justify-content: center;
+    padding-bottom: 10px;
+    font-weight: 900;
 }
-.title_job_feedback span {
+.title-job-feedback span {
     padding: 0 10px;
 }
 
@@ -1012,7 +968,6 @@ input[type=text] {
     align-items: center;
     text-align: center;
     margin-bottom: 30px;
-
 }
 
 .feedback-quote {
@@ -1021,16 +976,15 @@ input[type=text] {
     padding-bottom: 20px;
 }
 
-.title_job_feedback {
-    padding-bottom: 10px;
-    font-weight: 900;
-}
-
-.error-message{
+.error-message {
     color: red;
     position: relative;
     bottom: 20px;
 }
-#first-name-error, #last-name-error, #email-error, #submitted, #message-error{
+#first-name-error,
+#last-name-error,
+#email-error,
+#submitted,
+#message-error {
     display: none;
 }

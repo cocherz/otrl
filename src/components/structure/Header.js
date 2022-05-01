@@ -100,7 +100,7 @@ export const Header = ({ menuDoc }) => {
       <header className="sticky" >
         <section className="site-header"> <a onClick={() => gaEvent("/home")}>
           <HeaderLogo logo={menuDoc.data.header_image.url}/></a>
-          <section className="desktopNav mobile-hidden">
+          <section className="desktop-nav mobile-hidden">
             <NavItems items={menuDoc.data.menu_links} />
             <PrimaryButton classNames="header-button" redirect="/contact-us" copy="Contact Us" />
           </section>
