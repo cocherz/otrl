@@ -28,8 +28,8 @@ export const WhoWeAre = () => {
   if (home && menu && biopic && footer) {
     return (
       <Layout wrapperClass="page-content homepage" menuDoc={menu} footerDoc={footer}>
-        <AboutUsBanner banner={home.data.homepage_banner[0]} />
-        <section className="key-points-container section-container content-section">
+        {/* <AboutUsBanner banner={home.data.homepage_banner[0]} /> */}
+        {/* <section className="key-points-container section-container content-section">
           <div className="bullet-points">
             <h3>
               <PrismicText field={home.data.who_we_are} />
@@ -43,7 +43,7 @@ export const WhoWeAre = () => {
             <KeyPoints title={home.data.what_we_do} copy={home.data.what_we_do_bullets} tagline={home.data.tagline} />
           </div>
         </section>
-        <ClientFeedbackSlider />
+        <ClientFeedbackSlider /> */}
         <Bio biopic={biopic.data.team_member} />
         <OurClients show={2} />
       </Layout>

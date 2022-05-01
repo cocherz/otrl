@@ -2,11 +2,13 @@ import { PrismicText, PrismicLink } from "@prismicio/react";
 import { PrimaryButton } from "./common";
 import { MobileNav } from "./MobileNav";
 import React from "react";
+import { GATracker } from "./GoogleAnalytics";
+
 
 const HeaderLogo = ({ logo }) => {
   return (
-    <div className="logo">
-      <PrismicLink href="/" alt="logo">
+    <div className="logo" alt="logo">
+      <PrismicLink aria-label="Ontrack Retail, press to go to home page" href="/" alt="logo" aria-describedby="hello" >
         <svg width="135" height="32" viewBox="0 0 321 76" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" clipRule="evenodd" d="M164 5.09326H110V15.0933H131V74.0933H141V15.0933H164V5.09326Z" fill="#1F2937" />
           <path
@@ -64,10 +66,15 @@ const HeaderLogo = ({ logo }) => {
 };
 
 const MenuLink = ({ menuLink }) => {
+
+  const gaEvent = GATracker('Web-Header-click')
+
   return (
     <li>
-      <PrismicLink field={menuLink.link}>
+      <PrismicLink field={menuLink.link} onClick={() => gaEvent(menuLink.link.url)}>
+        <div className={window.location.pathname === menuLink.link.url ? "bolden" : "" }>
         <PrismicText field={menuLink.label} />
+        </div>
       </PrismicLink>
     </li>
   );
@@ -86,11 +93,13 @@ const NavItems = ({ items }) => {
 };
 
 export const Header = ({ menuDoc }) => {
+  
   if (menuDoc) {
+    const gaEvent = GATracker('Web-Header-click')
     return (
-      <header className="sticky">
-        <section className="site-header">
-          <HeaderLogo logo={menuDoc.data.header_image.url} />
+      <header className="sticky" >
+        <section className="site-header"> <a onClick={() => gaEvent("/home")}>
+          <HeaderLogo logo={menuDoc.data.header_image.url}/></a>
           <section className="desktopNav mobile-hidden">
             <NavItems items={menuDoc.data.menu_links} />
             <PrimaryButton classNames="header-button" redirect="/contact-us" copy="Contact Us" />

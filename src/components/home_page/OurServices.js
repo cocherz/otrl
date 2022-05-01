@@ -4,7 +4,7 @@ import { OurSericeCard } from "./OurServicesCard";
 import { PrimaryButton } from "../structure/common";
 
 export const OurServices = (data) => {
-  console.log(data);
+  
   return (
     <section className="background">
       <section className="content-section section-container-lr our-services ">

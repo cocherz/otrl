@@ -5,7 +5,7 @@ import { Layout } from "../components/Layout";
 import { NotFound } from "./NotFound";
 import { ContactUsCopy } from "../components/contact_us_page/ContactModalCopy";
 import { ClientImages } from "../components/contact_us_page/ClientImages";
-import { ContactUsForm } from "../components/contact_us_page/ContactUsForm";
+import { ContactUsForm } from "../components/contact_us_page/ContactUsForm.test";
 
 export const Contact = () => {
   const [menu, menuState] = useSinglePrismicDocument("menu");

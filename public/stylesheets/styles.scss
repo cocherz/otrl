@@ -16,12 +16,14 @@ footer {
 
 h2.page-heading,
 h2.page-heading-center {
-    width: 100%;
     text-align: center;
 }
 h2.subheading {
     line-height: 50px;
     padding-left: 20px;
+}
+.bolden{
+    font-weight: 700;
 }
 
 .bold {
@@ -98,9 +100,8 @@ h2.subheading {
 
 .site-header {
     max-width: 100vw;
-    height: 10px;
-    padding: 20px;
-    padding-bottom: 3rem;
+    height: 50px;
+    padding: 10px;
     border-bottom: 1px solid #f3f4f6;
 }
 
@@ -244,12 +245,12 @@ button.primary-button:hover {
     text-align: center;
     padding: 20px;
 }
-.bioContainer {
+ .flex {
     display: flex;
-    justify-content: center;
-}
+} 
 
 .team_member {
+    margin: 10px;
     background: #ffffff;
     width: 264px;
     height: 365px;
@@ -259,11 +260,12 @@ button.primary-button:hover {
     padding: 20px;
 }
 
-.team_bio_grid {
-    display: grid;
-    grid-template-columns: repeat(3, 284px);
-    grid-template-rows: repeat(2, 385px);
-    grid-gap: (40px 40px);
+.card_grid {
+    margin: auto;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .centerImage {
@@ -476,7 +478,7 @@ button.primary-button:hover {
     padding: 30px;
     min-width: 290px;
     height: 407px;
-    margin: 20px;
+    margin: 15px;
 }
 .jobImage {
     max-width: 80;
@@ -617,10 +619,18 @@ button.primary-button:hover {
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
 }
+.input-field-tall {
+    height: 124px;
+}
 
-.contact-us-form label input,  .application-form label input{
+textarea{
+    resize: none;
+    padding: 10px;
+}
+
+.contact-us-form label input, .contact-us-form label textarea,  .application-form label input{
     width: 100%;
-    height: 40px;
+    min-height: 40px;
     background: #ffffff;
     border-radius: 8px;
     border: 1px solid #d1d5db;
@@ -630,9 +640,7 @@ button.primary-button:hover {
     box-sizing: border-box; /* Opera/IE 8+ */
 }
 
-.input-field-tall {
-    height: 124px;
-}
+
 .contact-us-form {
     padding-left: 50px;
 }
@@ -682,6 +690,13 @@ input[type=text] {
     color: #5b21b6;
 }
 
+.contact-us-text span span{
+    float: right;
+}
+
+
+
+
 @keyframes lds-ripple {
     0% {
         top: 28px;
@@ -721,12 +736,7 @@ input[type=text] {
         width: 90%;
         margin: auto;
     }
-    .team_bio_grid {
-        display: grid;
-        grid-template-columns: repeat(2, 284px);
-        grid-template-rows: repeat(2, 385px);
-        grid-gap: 40px 40px;
-    }
+   
     .contact-us-container {
         box-shadow: 0px 0px 0px rgba(255, 255, 255, 0.15);
         border-radius: 0;
@@ -801,7 +811,7 @@ input[type=text] {
     }
     h2.page-heading {
         text-align: left;
-        padding: 20px;
+        margin: 20px;
         background-color: #ffffff;
     }
 
@@ -818,7 +828,8 @@ input[type=text] {
     .site-header {
         justify-content: space-between;
         align-items: center;
-        padding: 30px 30px;
+        
+        padding: 10px 30px;
         border-bottom: 2px solid #f3f4f6;
     }
 
@@ -843,7 +854,6 @@ input[type=text] {
     }
 
     .mobile-menu-item {
-        font-weight: 700;
         padding: 20px 30px;
     }
     .mobile-menu-item span {
@@ -905,21 +915,16 @@ input[type=text] {
     .footer-btn-copy {
         background: #5b21b6;
         border: none;
+       
         color: white;
-        padding: 15px 32px;
+        padding: 15px  32px;
         text-align: center;
         cursor: pointer;
         font-weight: 700;
         border-radius: 10px;
         margin: 10px 10px 0px 10px;
     }
-    /* home page */
-    .team_bio_grid {
-        display: grid;
-        grid-template-columns: repeat(1, 284px);
-        grid-template-rows: repeat(2, 385px);
-        grid-gap: 40px 40px;
-    }
+  
     /* carrers ppage */
 
     .CareerQuote {
@@ -952,24 +957,17 @@ input[type=text] {
         visibility: visible;
     }
 
-    
-   
-
     .jobHeaders {
         padding: 0;
     }
-    
+
+    .client-images{
+        display: flex;
+        align-items: center;
+    }
 }
 
 /* client and partners styling */
-
-/* .slick-track {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
-
 
 .slick-track{
     display: flex !important;
@@ -1033,6 +1031,6 @@ input[type=text] {
     position: relative;
     bottom: 20px;
 }
-#first-name-error, #last-name-error, #email-error, #submitted{
+#first-name-error, #last-name-error, #email-error, #submitted, #message-error{
     display: none;
 }

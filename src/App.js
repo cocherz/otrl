@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { PrismicProvider, PrismicToolbar } from "@prismicio/react";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 
@@ -14,14 +15,20 @@ import { PrivacyPolicy } from "./pages/footer_pages/PrivacyPolicy";
 import { Preview } from "./pages/Preview";
 import { WhoWeAre } from "./pages/WhoWeAre";
 
+
+import ReactGA from "react-ga";
+const TRACKING_ID = "UA-227506950-1";
+ReactGA.initialize(TRACKING_ID);
+
 export const App = () => {
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname === "/" ? "home" : window.location.pathname + window.location.search);
+  }, []);
+
+
   return (
-    <PrismicProvider
-      client={client}
-      internalLinkComponent={({ href, ...props }) => (
-        <Link to={href} {...props} />
-      )}
-    >
+    <PrismicProvider client={client} internalLinkComponent={({ href, ...props }) => <Link to={href} {...props} />}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />

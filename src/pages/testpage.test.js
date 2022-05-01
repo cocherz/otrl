@@ -3,6 +3,7 @@ import { useSinglePrismicDocument } from "@prismicio/react";
 import { Layout } from "../components/Layout";
 import { NotFound } from "./NotFound";
 
+
 export const TestPage = () => {
   const [menu, menuState] = useSinglePrismicDocument("menu");
   const [footer, footerState] = useSinglePrismicDocument("footer");
@@ -12,9 +13,7 @@ export const TestPage = () => {
 
   if (menu) {
     return (
-      <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={footer}>
-
-      </Layout>
+      null
     );
   } else if (notFound) {
     return <NotFound />;

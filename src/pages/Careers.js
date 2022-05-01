@@ -40,12 +40,14 @@ export const Careers = () => {
         <section className="activeRoles bottom-padding">
           <h2 className="page-heading heading-background">
             <PrismicText field={careers.data.current_vacancies} />
-          </h2>          
-          <div className="active-jobs content">
+          </h2>
+          <div className="flex">
+          <div className="card_grid content">
             {jobs.map((job, i) => (
               <ActiveJobs job={job} key={i} icons={icons} />
             ))}
           </div>
+          </div>           
         </section>
         <section className="OtherRoles">
           <OtherRole

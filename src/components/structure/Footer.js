@@ -3,9 +3,9 @@ import React from "react";
 
 const ImageLink = ({ imageLink }) => {
   return (
-    <li>
-      <a href={imageLink.url}>
-        <img className="socialImage" src={imageLink.image.url} alt={imageLink.image.alt}/>
+    <li >
+      <a href={imageLink.url} aria-label={"Find us on " + imageLink.image.alt + " here"}>
+        <img className="socialImage" src={imageLink.image.url} alt={imageLink.image.alt} />
       </a>
     </li>
   );
@@ -22,7 +22,7 @@ const ContactInfo = ({ footerDoc }) => {
         </ul>
       </div>
       <section className="footerContactDetails">
-        <h3 className="email">
+        <h3 className="email" >
           <PrismicText field={footerDoc.email} />
         </h3>
         <h3 className="phone">

@@ -81,7 +81,7 @@ export class ContactUsForm extends React.Component {
           />
         </label>
         <br />
-        <label>
+        <label className="contact-us-text">
           What we help you with? * <span> Max. 5000 characters</span>
           <br />
           <input
