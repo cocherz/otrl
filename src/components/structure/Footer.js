@@ -3,7 +3,7 @@ import React from "react";
 
 const ImageLink = ({ imageLink }) => {
   return (
-    <li >
+    <li>
       <a href={imageLink.url} aria-label={"Find us on " + imageLink.image.alt + " here"}>
         <img className="footer-social-image" src={imageLink.image.url} alt={imageLink.image.alt} />
       </a>
@@ -22,21 +22,21 @@ const ContactInfo = ({ footerDoc }) => {
         </ul>
       </div>
       <section className="footer-contact-details">
-        <h3 className="email" >
-          <PrismicText field={footerDoc.email} />
-        </h3>
+        <a href={`mailto:${footerDoc.email[0].text}`}>
+          <h3 className="email">
+            <PrismicText field={footerDoc.email} />
+          </h3>
+        </a>
         <h3 className="phone">
           <PrismicText field={footerDoc.phone} />
         </h3>
         <div className="otrl_copy">
-          <PrismicText field={footerDoc.otrl_copy} /> <a href="/contact-us">
-            <span className="purple-text"> Contact us</span> 
-            </a>
+          <PrismicText field={footerDoc.otrl_copy} />{" "}
+          <a href="/contact-us">
+            <span className="purple-text"> Contact us</span>
+          </a>
         </div>
-      
-      
       </section>
-      
     </section>
   );
 };
@@ -44,7 +44,7 @@ const ContactInfo = ({ footerDoc }) => {
 const FooterLinkList = ({ lists }) => {
   return (
     <div>
-      <a href={lists.link.url ? lists.link.url : "/"+lists.link.uid }>
+      <a href={lists.link.url ? lists.link.url : "/" + lists.link.uid}>
         <PrismicText field={lists.page} />
       </a>
     </div>
@@ -55,9 +55,9 @@ const FooterLinks = ({ footerTitle, footerLinks }) => {
   return (
     <section className="footer-links-section">
       <div className="footer-title">
-      <strong>
+        <strong>
           <PrismicText field={footerTitle} />
-      </strong>
+        </strong>
       </div>
       <div className="footer-links">
         {footerLinks.map((links, i) => (
@@ -75,18 +75,9 @@ export const Footer = ({ footerDoc }) => {
         <div className="footer-content-container">
           <ContactInfo footerDoc={footerDoc.data} />
           <section className="footer-links-area">
-            <FooterLinks
-              footerTitle={footerDoc.data.company}
-              footerLinks={footerDoc.data.company_links}
-            />
-            <FooterLinks
-              footerTitle={footerDoc.data.services}
-              footerLinks={footerDoc.data.services_links}
-            />
-            <FooterLinks
-              footerTitle={footerDoc.data.legal}
-              footerLinks={footerDoc.data.legal_links}
-            />
+            <FooterLinks footerTitle={footerDoc.data.company} footerLinks={footerDoc.data.company_links} />
+            <FooterLinks footerTitle={footerDoc.data.services} footerLinks={footerDoc.data.services_links} />
+            <FooterLinks footerTitle={footerDoc.data.legal} footerLinks={footerDoc.data.legal_links} />
           </section>
         </div>
         <section className="footer-copy">

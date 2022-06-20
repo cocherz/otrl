@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { GATracker } from "../structure/GoogleAnalytics";
 // import './styles.scss'
 
-export const ContactUsForm = ({}) => {
+export const ContactUsForm = () => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
@@ -14,6 +14,7 @@ export const ContactUsForm = ({}) => {
 
   const isValid = () => {
     let valid = true;
+    //eslint-disable-next-line
     if (firstName == null || firstName == "") {
       document.getElementById("first-name-error").style.display = "block";
       document.getElementById("firstName").style.border = "1px solid red";
@@ -22,6 +23,7 @@ export const ContactUsForm = ({}) => {
       document.getElementById("first-name-error").style.display = "none";
       document.getElementById("firstName").style.border = "1px solid #d1d5db";
     }
+        //eslint-disable-next-line
     if (lastName == null || lastName == "") {
       document.getElementById("last-name-error").style.display = "block";
       document.getElementById("lastName").style.border = "1px solid red";
@@ -31,6 +33,7 @@ export const ContactUsForm = ({}) => {
       document.getElementById("lastName").style.border = "1px solid #d1d5db";
 
     }
+    //eslint-disable-next-line
     if (email == null || email == "" || !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       document.getElementById("email-error").style.display = "block";
       document.getElementById("email").style.border = "1px solid red";
@@ -40,9 +43,10 @@ export const ContactUsForm = ({}) => {
       document.getElementById("email").style.border = "1px solid #d1d5db";
 
     }
+    //eslint-disable-next-line
     if (message == null || message == "" || message.length >= 5000) {
-        document.getElementById("message-error").style.display = "block";
-        document.getElementById("message").style.border = "1px solid red";
+      document.getElementById("message-error").style.display = "block";
+      document.getElementById("message").style.border = "1px solid red";
         valid = false;
     }else {
         document.getElementById("message-error").style.display = "none";

@@ -7,6 +7,11 @@
   --light-text-hover: #72767b;
 }
 
+input:focus {
+  border-color: var(--main-purple);
+  outline-color: var(--light-purple);
+}
+
 .container,
 .content-section,
 header,
@@ -48,6 +53,10 @@ h2.subheading {
 
 .bottom-padd {
   padding-bottom: 20px;
+}
+
+.blue-backgroud {
+  background-color: var(--main-bg-color);
 }
 
 .centered {
@@ -98,6 +107,18 @@ h2.subheading {
   padding: 0px 20px;
 }
 
+.section-container-l {
+  padding-left: 20px;
+}
+
+.section-container-l {
+  padding-right: 20px;
+}
+
+.centered-text {
+  margin: auto 0;
+}
+
 .section-container {
   padding: 20px;
 }
@@ -116,23 +137,27 @@ h2.subheading {
 }
 
 /* Header */
+.logo {
+  margin: auto 0;
+  width: 110px;
+  padding-left: 10px;
+}
+
 .desktop-nav {
+  margin: auto 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  padding-left: 5rem;
+  width: 100%;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 90%;
 }
 
 .site-header {
   max-width: 100vw;
-  height: 50px;
-  padding: 10px;
+  height: 77px;
   border-bottom: 1px solid #f3f4f6;
 }
 
@@ -140,17 +165,24 @@ h2.subheading {
   color: var(--light-text-hover);
 }
 
+.header-button {
+  width: 100%;
+  float: right;
+  margin: 10px;
+}
+
 footer a:hover {
   color: var(--light-text-hover);
 }
 
 button.primary-button,
+div.primary-button,
 .application-form .submitCTA input,
 .contact-us-form .submitCTA input {
   background: var(--main-purple);
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 15px 20px;
   font-size: 16px;
   font-weight: 700;
   text-align: center;
@@ -175,15 +207,12 @@ button.primary-button:hover {
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline;
+  height: 72px;
   background: white;
 }
 
 .site-header nav ul li {
   padding-right: 20px;
-}
-
-.logo {
-  padding-right: 40px;
 }
 
 /* Home page section */
@@ -703,6 +732,12 @@ button.primary-button:hover {
 
 .share-and-apply {
   padding-left: 120px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
 }
 
 .share-me {
@@ -757,6 +792,10 @@ form label {
           flex-direction: column;
 }
 
+label span {
+  padding-top: 15px;
+}
+
 .contact-us-form label input,
 .contact-us-form label textarea,
 .application-form label input {
@@ -764,7 +803,7 @@ form label {
   background: var(--light-bg-color);
   border-radius: 8px;
   border: 1px solid #d1d5db;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .contact-us-form {
@@ -801,6 +840,10 @@ input[type="text"] {
   padding: 30px 0px;
   text-align: center;
   margin-bottom: 20px;
+}
+
+.custom-file-upload:hover {
+  background: var(--main-bg-color);
 }
 
 .cursorpointer {
@@ -841,7 +884,7 @@ a .purple-text:hover {
     display: none;
   }
   .application-form {
-    width: 95%;
+    width: 85%;
     margin: auto;
   }
   .contact-us-container {
@@ -898,6 +941,12 @@ a .purple-text:hover {
 }
 
 @media (max-width: 600px) {
+  html, body {
+    overflow-x: hidden;
+  }
+  body {
+    position: relative;
+  }
   h1 {
     font-size: 22px;
     font-weight: 700;
@@ -931,12 +980,15 @@ a .purple-text:hover {
   .content-section {
     margin-bottom: 2rem;
   }
-  .sticky {
-    position: -webkit-sticky;
-    position: sticky;
+  .fixed {
+    position: fixed;
+    z-index: 2;
     top: 0;
+    left: 0;
     width: 100%;
-    z-index: 10;
+  }
+  body {
+    margin-top: 74px;
   }
   .site-header {
     -webkit-box-pack: justify;
@@ -945,7 +997,9 @@ a .purple-text:hover {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    padding: 10px 30px;
+    position: relative;
+    z-index: 300;
+    padding: 0px 30px;
     border-bottom: 2px solid #f3f4f6;
   }
   .hamburger {
@@ -967,7 +1021,7 @@ a .purple-text:hover {
     height: 100vh;
   }
   .mobile-menu-item {
-    padding: 20px 10px;
+    margin: 20px 10px;
   }
   .mobile-menu-item span {
     float: right;
@@ -1155,17 +1209,227 @@ a .purple-text:hover {
   padding-bottom: 20px;
 }
 
+.message {
+  color: red;
+}
+
 .error-message {
   color: red;
-  position: relative;
-  bottom: 20px;
 }
 
 #first-name-error,
 #last-name-error,
 #email-error,
 #submitted,
-#message-error {
+#message-error,
+#resume-error {
   display: none;
+}
+
+#resume-error {
+  padding-bottom: 5px;
+}
+
+.loader {
+  border: 4px solid var(--light-bg-color);
+  border-top: 4px solid var(--main-purple);
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+  margin: auto;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.css-browser {
+  width: 425px;
+  height: 307px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  -webkit-box-shadow: 0px 20px 100px rgba(28, 0, 72, 0.12);
+          box-shadow: 0px 20px 100px rgba(28, 0, 72, 0.12);
+  border-radius: 10px;
+  border-top: none;
+}
+
+.css-browser-header {
+  height: 38px;
+  width: 425px;
+  background: #faf9fafa;
+  border-radius: 10px 10px 0 0;
+  border: 1px solid #E5E7EB;
+  position: relative;
+  right: 1px;
+}
+
+.css-header-dots {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 6px;
+}
+
+.css-header-dots div {
+  height: 8px;
+  width: 8px;
+  margin-right: 5px;
+  border: 1px solid #E5E7EB;
+  background: #FFFFFF;
+  border-radius: 100%;
+}
+
+.header-tab {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header-tab-open {
+  width: 48px;
+  height: 16px;
+  background: #FFFFFF;
+  margin-left: 20px;
+  border: 1px solid #E5E7EB;
+  border-radius: 3px 3px 0 0;
+  border-bottom: none;
+  font-size: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header-tab-pill {
+  width: 34px;
+  height: 5px;
+  background: #E4E3E7;
+  border-radius: 3px;
+  margin-left: 6px;
+}
+
+.browser-image-container {
+  height: 265px;
+  width: 423px;
+  margin: 1px;
+  border-radius: 0 0 9px 9px;
+  overflow: hidden;
+}
+
+.css-mobile-container {
+  width: 168px;
+  height: 319px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  -webkit-box-shadow: 0px 20px 100px rgba(28, 0, 72, 0.12);
+          box-shadow: 0px 20px 100px rgba(28, 0, 72, 0.12);
+  border-radius: 10px;
+}
+
+.css-square-container {
+  width: 204px;
+  height: 243px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  -webkit-box-shadow: 0px 20px 100px rgba(28, 0, 72, 0.12);
+          box-shadow: 0px 20px 100px rgba(28, 0, 72, 0.12);
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.dev-service, .consultancy-service {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5fr 4fr;
+      grid-template-columns: 5fr 4fr;
+}
+
+.webtis-service, .afflitate-service {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 4fr 5fr;
+      grid-template-columns: 4fr 5fr;
+}
+
+.bespokeDevImage, .consultancy-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  z-index: 1;
+}
+
+.affiliate-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.left {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  right: 60px;
+}
+
+.right-down {
+  position: relative;
+  left: 170px;
+  top: 45px;
+}
+
+.right-up {
+  position: relative;
+  right: 250px;
+  bottom: 50px;
+  z-index: 0;
+}
+
+.ztop {
+  position: relative;
+  z-index: 2;
+}
+
+.service-section {
+  padding: 3rem 0;
+}
+
+.width-null {
+  width: 0px;
+}
+
+.service-page {
+  max-width: 1140px;
+  margin: auto;
 }
 /*# sourceMappingURL=styles.css.map */

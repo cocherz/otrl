@@ -15,9 +15,9 @@ export const Bio = ({ biopic }) => (
         {biopic.map((member, i) => (
           <li key={i} >
             <section className="team_member" >
-              <img src={member.headshot.url} className="headshot centerImage padDown" aria-label={"Image of " + member.full_name[0].text + ", " + member.job_title[0].text + "at Ontrack Retail"} />
+              <img src={member.headshot.url} className="headshot centerImage padDown"  aria-label={"Image of " + member.full_name[0].text + ", " + member.job_title[0].text + "at Ontrack Retail"} alt=""/>
               <a href={member.linkedin_url.url}>
-                <img src={member.linkedin.url} className="linkedinImage centerImage padDown" aria-label={"click here to find " + member.full_name[0].text + " on linkedin"}/>
+                <img src={member.linkedin.url} className="linkedinImage centerImage padDown" aria-label={"click here to find " + member.full_name[0].text + " on linkedin"} alt=""/>
               </a>
               <div className="title_job" aria-hidden="true" >
                 <PrismicText field={member.full_name} />

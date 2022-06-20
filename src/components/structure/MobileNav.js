@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PrismicLink, PrismicText } from "@prismicio/react";
+import { PrismicText } from "@prismicio/react";
 import { PrimaryButton } from "./common";
 import React from "react";
 import { GATracker } from "./GoogleAnalytics";
@@ -63,8 +63,8 @@ const BurgerMenu = ({ setIsNavExpanded, isNavExpanded }) => {
 
 export const MobileMenu = ({ menuLink, i }) => {
   return (
-    <li className="mobile-menu-item" onClick={() => gaEvent(menuLink.link.url)}>
-      <a href={menuLink.link.url} key={i}>
+    <li key={i} className="mobile-menu-item" onClick={() => gaEvent(menuLink.link.url)}>
+      <a href={menuLink.link.url} >
         <div>
         <PrismicText field={menuLink.label} />
         <span aria-hidden="true">
@@ -90,7 +90,7 @@ export const MobileNav = ({ menuDoc }) => {
           <div className="mobile-menu-container" aria-modal="true">
             <ol className="mobile-menu-items section-container">
               {menuDoc.data.menu_links.map((menuLink, i) => (
-                <div className={window.location.pathname === menuLink.link.url ? "bolden" : ""}>
+                <div key={i} className={window.location.pathname === menuLink.link.url ? "bolden" : ""}>
                   <MobileMenu menuLink={menuLink} key={i} />
                 </div>
               ))}

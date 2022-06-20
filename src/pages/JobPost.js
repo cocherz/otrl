@@ -33,7 +33,7 @@ export const JobPost = () => {
         <div className="background">
           <section className="job-content content-section page-heading">
             <JobSummary job={job.data} icons={icons.data} />
-            <div className="section-container">
+            <div className="section-container desktop-hidden">
             <PrimaryButton classNames={"wide-btn desktop-hidden"} copy={"Apply"} clickAction={(e) => document.getElementById("pills").scrollIntoView()}/>
             </div>
             <JobPageContent job={job.data} icons={icons.data} />

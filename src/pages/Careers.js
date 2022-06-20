@@ -24,8 +24,9 @@ export const Careers = () => {
   }, [careersState.state]);
 
   if (careers && menu && jobs && icons) {
-    return (
+    return  (
       <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={footer}>
+        
         <section className="active-roles bottom-padding">
           <h2 className="page-heading heading-background">
             <PrismicText field={careers.data.current_vacancies} />
@@ -44,7 +45,8 @@ export const Careers = () => {
         <QuoteSection data={careers.data} />
       </Layout>
     );
-  } else if (notFound) {
+  } 
+  if (notFound) {
     return <NotFound />;
   }
   return null;

@@ -1,5 +1,4 @@
 import React, {useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import { PrismicProvider, PrismicToolbar } from "@prismicio/react";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 
@@ -14,6 +13,7 @@ import { CookiePolicy } from "./pages/footer_pages/CookiePolicy";
 import { PrivacyPolicy } from "./pages/footer_pages/PrivacyPolicy";
 import { Preview } from "./pages/Preview";
 import { WhoWeAre } from "./pages/WhoWeAre";
+import { Services } from "./pages/Services";
 
 
 import ReactGA from "react-ga";
@@ -33,6 +33,7 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/who-we-are" element={<WhoWeAre />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/test-page" element={<TestPage />} />
           <Route path="/contact-us" element={<Contact />} />
