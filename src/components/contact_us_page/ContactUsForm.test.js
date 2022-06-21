@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { emailValidate, validate } from "../structure/validation";
 import { GATracker } from "../structure/GoogleAnalytics";
 // import './styles.scss'
 
@@ -13,45 +14,14 @@ export const ContactUsForm = () => {
   const gaEvent = GATracker('Contact-form')
 
   const isValid = () => {
+
+    //eslint-disable-next-line
     let valid = true;
-    //eslint-disable-next-line
-    if (firstName == null || firstName == "") {
-      document.getElementById("first-name-error").style.display = "block";
-      document.getElementById("firstName").style.border = "1px solid red";
-      valid = false;
-    } else {
-      document.getElementById("first-name-error").style.display = "none";
-      document.getElementById("firstName").style.border = "1px solid #d1d5db";
-    }
-        //eslint-disable-next-line
-    if (lastName == null || lastName == "") {
-      document.getElementById("last-name-error").style.display = "block";
-      document.getElementById("lastName").style.border = "1px solid red";
-      valid = false;
-    } else {
-      document.getElementById("last-name-error").style.display = "none";
-      document.getElementById("lastName").style.border = "1px solid #d1d5db";
-
-    }
-    //eslint-disable-next-line
-    if (email == null || email == "" || !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-      document.getElementById("email-error").style.display = "block";
-      document.getElementById("email").style.border = "1px solid red";
-      valid = false;
-    } else {
-      document.getElementById("email-error").style.display = "none";
-      document.getElementById("email").style.border = "1px solid #d1d5db";
-
-    }
-    //eslint-disable-next-line
-    if (message == null || message == "" || message.length >= 5000) {
-      document.getElementById("message-error").style.display = "block";
-      document.getElementById("message").style.border = "1px solid red";
-        valid = false;
-    }else {
-        document.getElementById("message-error").style.display = "none";
-        document.getElementById("message").style.border = "1px solid #d1d5db";
-      }
+    let emailValid = emailValidate(email);
+    let lastNameValid = validate(lastName, "last-name");
+    let firstNameValid = validate(firstName, "first-name");
+    let messageValid = validate(message, "message");
+    valid = emailValid && lastNameValid && firstNameValid && messageValid;
     if (valid === true) {
       document.getElementById("unsubmitted").style.display = "none";
       document.getElementById("submitted").style.display = "block";
@@ -59,7 +29,6 @@ export const ContactUsForm = () => {
     }
     return true;
   };
-
 
   const buildMessage = () => {
     let fullName = firstName + " " + lastName 
@@ -83,7 +52,7 @@ export const ContactUsForm = () => {
     >
       <label aria-label="First name">
         <span aria-hidden="true"> First Name * </span>
-        <input className="input-field" name="firstName" id="firstName" aria-hidden="false" type="text" checked={firstName} onChange={(e) => setFirstName(e.target.value)} />
+        <input className="input-field" name="firstName" id="first-name" aria-hidden="false" type="text" checked={firstName} onChange={(e) => setFirstName(e.target.value)} />
       </label>
       <h5 id="first-name-error" className="error-message" aria-label="First name is invalid">
         {" "}
@@ -92,7 +61,7 @@ export const ContactUsForm = () => {
  
       <label aria-label="Last name">
         <span aria-hidden="true"> Last Name * </span>
-        <input className="input-field" name="lastName" id="lastName" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+        <input className="input-field" name="lastName" id="last-name" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
       </label>
       <h5 id="last-name-error" className="error-message" aria-label="Last name is invalid">
         {" "}
@@ -118,7 +87,7 @@ export const ContactUsForm = () => {
       </label>
 
       <label className="contact-us-text" aria-label="What can we help you with? Max. 5000 characters">
-        <span aria-hidden="true"> What we help you with? * <span> Max. 5000 characters</span></span>
+        <span aria-hidden="true"> What we help you with? * <span className="no-padding"> Max. 5000 characters</span></span>
 
         <textarea id="message" className="input-field input-field-wide input-field-tall" name="message" type="text" value={message} onChange={(e) => setMessage(e.target.value)}/>
       </label>

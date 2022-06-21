@@ -11,43 +11,15 @@ export const emailValidate = (email) => {
   }
 };
 
-export const firstNameValidate = (firstName) => {
+export const validate = (x, ...arg) => {
   //eslint-disable-next-line
-  if (firstName == null || firstName == "") {
-    document.getElementById("first-name-error").style.display = "block";
-    document.getElementById("firstName").style.border = "1px solid red";
+  if (x == null || x == "") {
+    document.getElementById(`${arg[0]}-error`).style.display = "block";
+    document.getElementById(`${arg[0]}`).style.border = "1px solid red";
     return false;
   } else {
-    document.getElementById("first-name-error").style.display = "none";
-    document.getElementById("firstName").style.border = "1px solid #d1d5db";
+    document.getElementById(`${arg[0]}-error`).style.display = "none";
+    document.getElementById(`${arg[0]}`).style.border = "1px solid #d1d5db";
     return true
   }
 };
-
-export const lastNameValidate = (lastName) => {
-  //eslint-disable-next-line
-  if (lastName == null || lastName == "") {
-    document.getElementById("last-name-error").style.display = "block";
-    document.getElementById("lastName").style.border = "1px solid red";
-    return false;
-  } else {
-    document.getElementById("last-name-error").style.display = "none";
-    document.getElementById("lastName").style.border = "1px solid #d1d5db";
-    return true
-  }
-};
-
-export const fileValidate = (files) => {
-  //eslint-disable-next-line
-  if (files == null) {
-    document.getElementById("drop-zone").style.border = "1px solid red";
-    document.getElementById("resume-error").style.display = "block";
-    return false;
-  } else {
-    document.getElementById("drop-zone").style.border = "1px dashed #d1d5db";
-    document.getElementById("resume-error").style.display = "none";
-    return true
-}
-};
-
-

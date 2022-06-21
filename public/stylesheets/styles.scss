@@ -179,7 +179,7 @@ button.primary-button:hover {
 }
 .wide-btn {
     width: 100%;
-    margin: 0px 0px;
+    margin-top: 20px;
 }
 
 .site-header,
@@ -648,6 +648,10 @@ button.primary-button:hover {
     height: 124px;
 }
 
+.no-padding{
+    padding: 0;
+}
+
 textarea {
     resize: none;
     padding: 10px;
@@ -698,7 +702,6 @@ input[type="text"] {
     width: 100%;
     padding: 30px 0px;
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .custom-file-upload:hover{

@@ -74,7 +74,7 @@ npm
       </h5>
       <label>
         <span aria-hidden="true"> Resume * </span>
-        <div
+        <section
           className="custom-file-upload"
           id="drop-zone"
           onDragEnter={preventBubbling}
@@ -91,7 +91,6 @@ npm
             {files && (
               <div className="cursorpointer" onClick={(e) => deleteFile(e)}>
                 <h3 className="banner-content"> {files[0].name.substring(0, 26) + "..."} </h3>
-              
                 <span> click to remove </span>
               </div>
             )}
@@ -115,7 +114,7 @@ npm
               }}
             />
           )}
-        </div>
+        </section>
       </label>
       <h5 id="resume-error" className="error-message" aria-label="please attach a resume">
         {" "}
@@ -129,7 +128,7 @@ npm
           </div>
         ) : (
           <button type="submit" value="Submit" className="primary-button wide-btn">
-            Submit
+            Apply
           </button>
         )}
       </div>

@@ -14,7 +14,6 @@ export const JobPageContent = ({ job, icons }) => {
       <div className="share-and-apply">
         <ShareVacany icons={icons} job={job}/>
         <ApplicationForm jobTitle={job.job_title[0].text}/>
-        {console.log(job)}
         <div id="submitted" className="application-form">
         {" "}
         <h3> Thanks for applying for our {job.job_title[0].text} role! </h3>

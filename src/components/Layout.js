@@ -6,13 +6,11 @@ import React from "react";
  */
 export const Layout = ({ wrapperClass, menuDoc, footerDoc, children }) => {
 
-  var pageTitle = ""
-
   if(window.location.pathname === "/"){
     document.title = "OnTrack Retail"
   }
   else{
-    document.title =  "OnTrack Retail" + " | " + (window.location.pathname.split("/")[1][0].toUpperCase() + window.location.pathname.split("/")[1].slice(1)).replaceAll("-", " ")
+    document.title =  `OnTrack Retail | ${window.location.pathname.split("/")[1][0].toUpperCase() + window.location.pathname.split("/")[1].slice(1).replaceAll("-", " ")}`
   }
 
       

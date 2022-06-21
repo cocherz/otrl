@@ -25,8 +25,8 @@ export const Services = () => {
       <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={footer}>
         <section className="blue-backgroud"> 
         <ServicePage servicesArray={home.data.body[0].items} />
-        <div className="our-service-copy center">
-          <PrismicText field={home.data.body[0].primary.our_services_copy} />
+        <div >
+          <PrismicText className="our-service-copy center" field={home.data.body[0].primary.our_services_copy} />
         </div>
         <div className="our-service-tagline section-container-tb center">
           <PrismicText field={home.data.body[0].primary.our_services_tagline} />
