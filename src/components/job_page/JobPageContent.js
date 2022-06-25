@@ -1,7 +1,7 @@
 import React from "react";
 import { JobDesc } from "./JobDesc";
 import { ShareVacany } from "./ShareVacancy";
-import { ApplicationForm } from "./ApplicationForm";
+import { ApplicationForm } from "./ApplicationForm.test";
 
 export const JobPageContent = ({ job, icons }) => {
   return (

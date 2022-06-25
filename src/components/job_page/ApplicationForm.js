@@ -7,10 +7,8 @@ export const ApplicationForm = ({ jobTitle }) => {
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
   const [files, setFiles] = useState();
-
   const [loading, setLoadingState] = useState();
   // const [failedSend, setFailedSend] = useState(true);
-
 
   const gaEvent = GATracker(`Job-post-${jobTitle}`);
 
@@ -30,12 +28,11 @@ export const ApplicationForm = ({ jobTitle }) => {
     return valid;
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(isValid()){
-      console.log(isValid())
-    setLoadingState(true);
+    if (isValid()) {
+      console.log(isValid());
+      setLoadingState(true);
     }
   };
 
@@ -65,9 +62,8 @@ export const ApplicationForm = ({ jobTitle }) => {
         }}
         className="application-form"
       >
-        <div className="bottom-padding">
-          <h3 aria-label="Application form"> Application</h3>
-        </div>
+        <h3 aria-label="Application form"> Application</h3>
+
         <label aria-label="First name">
           <span aria-hidden="true"> First Name * </span>
           <input className="input-field" name="firstName" id="first-name" type="text" checked={firstName} onChange={(e) => setFirstName(e.target.value)} />
@@ -144,11 +140,11 @@ export const ApplicationForm = ({ jobTitle }) => {
             )}
           </div>
           <h5 id="resume-error" className="error-message" aria-label="please attach a resume">
-          {" "}
-          * Please attach your resume{" "}
-        </h5>
+            {" "}
+            * Please attach your resume{" "}
+          </h5>
         </label>
-        
+
         <div className="submitCTA">
           {loading ? (
             <div className="primary-button">
@@ -174,4 +170,3 @@ export const ApplicationForm = ({ jobTitle }) => {
     </section>
   );
 };
-

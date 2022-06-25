@@ -7,9 +7,12 @@ export const ContactUsForm = () => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
-  const [companyName, setCompanyName] = useState();
-  const [jobTitle, setJobTitle] = useState();
+  const [companyName, setCompanyName] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
   const [message, setMessage] = useState();
+  const [loading, setLoadingState] = useState();
+
+
 
   const gaEvent = GATracker('Contact-form')
 
@@ -23,22 +26,44 @@ export const ContactUsForm = () => {
     let messageValid = validate(message, "message");
     valid = emailValid && lastNameValid && firstNameValid && messageValid;
     if (valid === true) {
-      document.getElementById("unsubmitted").style.display = "none";
-      document.getElementById("submitted").style.display = "block";
       gaEvent("contact-form-submited") 
     }
     return true;
   };
 
-  const buildMessage = () => {
-    let fullName = firstName + " " + lastName 
-    console.log(fullName);
-  }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    isValid() 
-    buildMessage()
+    if (isValid()){
+      const url = "https://9ms7dfz6i0.execute-api.eu-west-1.amazonaws.com/stage/send"
+      const config = {
+        mode: "no-cors",
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          senderName: "maxwell.cochrane+dev@gmail.com",
+          senderEmail: "maxwell.cochrane+dev@gmail.com",
+          subject: `Enquiry from ${firstName} ${lastName} | ${companyName} ${jobTitle}`,
+          message: `${message}`,
+          base64Data: "",
+          fileName: "",
+        }),
+      }
+        const response = await fetch(url, config).then(setLoadingState(true))
+        if (response.response = "ok") {
+          setLoadingState(false)
+          document.getElementById("unsubmitted").style.display = "none";
+          document.getElementById("submitted").style.display = "block";
+          return response
+        } else {
+          setLoadingState(false)
+          console.log(response, "error")
+        }
+      
+    }
   };
 
   return (
@@ -96,7 +121,9 @@ export const ContactUsForm = () => {
         * invalid{" "}
       </h5>
       <div className="submitCTA ">
-        <button type="submit" value="Submit" className="primary-button wide-btn"> Submit </button>
+      <button type="submit" value="Submit" className="primary-button wide-btn">
+              {loading ?  <div className="loader" /> : "Submit" }
+            </button>
       </div>
     </form>
     <section className="contact-us-form mobile-outline" id="submitted" > 

@@ -14,9 +14,8 @@ import { OurServices } from "../components/home_page/OurServices";
 export const HomePage = () => {
   const [home, homeState] = useSinglePrismicDocument("homepage");
   const [menu, menuState] = useSinglePrismicDocument("menu");
-  const [footer, footerState] = useSinglePrismicDocument("footer");
 
-  const notFound = homeState.state === "failed" || menuState.state === "failed" || footerState.state === "failed";
+  const notFound = homeState.state === "failed" || menuState.state === "failed" ;
 
   useEffect(() => {
     if (homeState.state === "failed") {
@@ -24,9 +23,9 @@ export const HomePage = () => {
     }
   }, [homeState.state]);
 
-  if (home && menu && footer) {
+  if (home && menu ) {
     return (
-      <Layout wrapperClass="page-content homepage" menuDoc={menu} footerDoc={footer}>
+      <Layout wrapperClass="page-content homepage" menuDoc={menu} footerDoc={menu}>
         <HomePageHeader data={home.data} />
         <OurServices data={home.data} />
         <ClientFeedbackSlider />

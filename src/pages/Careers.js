@@ -10,12 +10,10 @@ import { ActiveJobs } from "../components/careers_page/activeJobs";
 
 export const Careers = () => {
   const [menu, menuState] = useSinglePrismicDocument("menu");
-  const [icons, iconState] = useSinglePrismicDocument("icons");
-  const [footer, footerState] = useSinglePrismicDocument("footer");
   const [careers, careersState] = useSinglePrismicDocument("careers");
   const [jobs, jobsState] = useAllPrismicDocumentsByType("jobpost");
 
-  const notFound = menuState.state === "failed" || footerState.state === "failed" || careersState.state === "failed" || iconState.state === "failed" || jobsState.state === "falied";
+  const notFound = menuState.state === "failed"  || careersState.state === "failed" || jobsState.state === "falied";
 
   useEffect(() => {
     if (careersState.state === "failed") {
@@ -23,9 +21,13 @@ export const Careers = () => {
     }
   }, [careersState.state]);
 
-  if (careers && menu && jobs && icons) {
+
+  console.log(jobs)
+
+
+  if (careers && menu && jobs) {
     return  (
-      <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={footer}>
+      <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={menu}>
         
         <section className="active-roles bottom-padding">
           <h2 className="page-heading heading-background">
@@ -34,7 +36,7 @@ export const Careers = () => {
           <div className="flex">
             <div className="card_grid content">
               {jobs.map((job, i) => (
-                <ActiveJobs job={job} key={i} icons={icons} />
+                <ActiveJobs job={job} key={i} icons={menu.data} />
               ))}
             </div>
           </div>

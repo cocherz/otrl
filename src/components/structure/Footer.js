@@ -3,11 +3,13 @@ import React from "react";
 
 const ImageLink = ({ imageLink }) => {
   return (
+    <a href={imageLink.url} aria-label={"Find us on " + imageLink.image.alt + " here"}>
     <li>
-      <a href={imageLink.url} aria-label={"Find us on " + imageLink.image.alt + " here"}>
-        <img className="footer-social-image" src={imageLink.image.url} alt={imageLink.image.alt} />
-      </a>
+      
+        <img className="social-image " src={imageLink.image.url} alt={imageLink.image.alt} />
+      
     </li>
+    </a>
   );
 };
 

@@ -1,5 +1,12 @@
 /* General */
 
+.square{
+    height: 50px;
+    width: 50px;
+    background-color: #5b21b6;
+}
+
+
 :root {
     --main-bg-color: #f8fbff;
     --light-bg-color: #ffffff;
@@ -67,6 +74,7 @@ h2.subheading {
 }
 .small-icon-container {
     width: 22px;
+    display: flex;
 }
 .align-img {
     display: flex;
@@ -181,6 +189,11 @@ button.primary-button:hover {
     width: 100%;
     margin-top: 20px;
 }
+
+.apply-btn {
+    width: 100%;
+}
+
 
 .site-header,
 .site-header nav ul {
@@ -375,8 +388,10 @@ button.primary-button:hover {
     display: flex;
 }
 
-.footer-social-image {
-    padding-right: 10px;
+.social-image {
+    margin-right: 10px;
+    max-height: 33px;
+    max-width: 33px;
 }
 
 .footer-links-area {
@@ -487,6 +502,11 @@ button.primary-button:hover {
     padding-right: 5px;
 }
 
+.pill-icon{
+    height: 15px;
+
+}
+
 .active-jobs {
     display: flex;
     align-items: center;
@@ -505,7 +525,7 @@ button.primary-button:hover {
 }
 .job-img {
     height: 80px;
-    max-width: 80;
+    max-width: 80px;
     display: flex;
     margin: auto;
     padding: 30px;
@@ -569,7 +589,7 @@ button.primary-button:hover {
 .job-headers {
     display: flex;
     width: 100%;
-    padding-top: 50px;
+    padding-top: 30px;
 }
 
 .job-img-large {
@@ -631,10 +651,6 @@ button.primary-button:hover {
     display: flex;
     justify-content: left;
     align-items: center;
-}
-
-.social-share-icons img {
-    margin-right: 10px;
 }
 
 .application-form {
@@ -1047,7 +1063,8 @@ a .purple-text:hover {
 #email-error,
 #submitted,
 #message-error,
-#resume-error {
+#resume-error,
+#resume-file-error {
     display: none;
 }
 #resume-error{

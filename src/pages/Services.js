@@ -8,11 +8,9 @@ import { ServicePage } from "../components/services_page/ServicePage";
 
 export const Services = () => {
   const [menu, menuState] = useSinglePrismicDocument("menu");
-  const [icons] = useSinglePrismicDocument("icons");
-  const [footer, footerState] = useSinglePrismicDocument("footer");
   const [home, homeState] = useSinglePrismicDocument("homepage");
 
-  const notFound = menuState.state === "failed" || footerState.state === "failed" || homeState.state === "failed";
+  const notFound = menuState.state === "failed" || homeState.state === "failed";
 
   useEffect(() => {
     if (homeState.state === "failed") {
@@ -20,9 +18,9 @@ export const Services = () => {
     }
   }, [homeState.state]);
 
-  if (footer && menu && icons && home) {
+  if (menu && home) {
     return (
-      <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={footer}>
+      <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={menu}>
         <section className="blue-backgroud"> 
         <ServicePage servicesArray={home.data.body[0].items} />
         <div >

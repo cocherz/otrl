@@ -9,12 +9,10 @@ import { ContactUsForm } from "../components/contact_us_page/ContactUsForm.test"
 
 export const Contact = () => {
   const [menu, menuState] = useSinglePrismicDocument("menu");
-  const [footer, footerState] = useSinglePrismicDocument("footer");
   const [contact, contactState] = useSinglePrismicDocument("contact");
 
   const notFound =
     menuState.state === "failed" ||
-    footerState.state === "failed" ||
     contactState.state === "failed";
 
   useEffect(() => {
@@ -27,7 +25,7 @@ export const Contact = () => {
 
   if (contact && menu) {
     return (
-      <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={footer}>
+      <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={menu}>
         <div className="background section-container-tb">
           
             <section className="contact-us-container margin-centered">

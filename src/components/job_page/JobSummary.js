@@ -11,23 +11,23 @@ export const JobSummary = ({ job, i, icons }) => {
         </h2>
         <div className="pills-row">
           <div className="pill align-img">
-          <div className="small-icon-container">
-            <img src={icons.location.url} alt={icons.location.alt}/>
+          <div className="small-icon-container ">
+            <img src={icons.location.url} alt={icons.location.alt}  className="pill-icon"/>
             </div>{job.location}
           </div>
           <div className="pill align-img">
           <div className="small-icon-container">
-            <img src={icons.location.url} alt={icons.location.alt}/>
+            <img src={icons.location.url} alt={icons.location.alt}  className="pill-icon"/>
             </div>{job.office_or_remote}
           </div>
           <div className="pill align-img">
           <div className="small-icon-container">
-            <img src={icons.coins.url} alt={icons.coins.alt}/></div>
+            <img src={icons.coins.url} alt={icons.coins.alt}  className="pill-icon"/></div>
             <PrismicText field={job.salary} />
           </div>
           <div className="pill align-img">
           <div className="small-icon-container">
-            <img src={icons.person.url} alt={icons.person.alt}/>
+            <img src={icons.person.url} alt={icons.person.alt}  className="pill-icon"/>
             </div><span>{job.con_or_perm}</span>
 
 

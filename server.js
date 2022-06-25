@@ -1,65 +1,44 @@
-const express = require("express");
-const nodemailer = require("nodemailer");
-const app = express();
-const cors = require("cors");
-require("dotenv").config();
 
-// middleware
-app.use(express.json());
-app.use(cors());
+  import React, { useState } from "react";
 
-
-let transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    type: "OAuth2",
-    user: process.env.EMAIL,
-    pass: process.env.WORD,
-    clientId: process.env.OAUTH_CLIENTID,
-    clientSecret: process.env.OAUTH_CLIENT_SECRET,
-    refreshToken: process.env.OAUTH_REFRESH_TOKEN,
-  },
-});
-
-
-const port = process.env.PORT || 3001;
-app.listen(port, () => {
- console.log(`Server is running on port: ${port}`);
-});
-
-transporter.verify((err, success) => {
-  err ? console.log(err) : console.log(`=== Server is ready to take messages: ${success} ===`);
-});
-
-app.post('/send', async (req, res) => {
-
-  const docs = Object.keys(req.files).map(key => {
-    return {
-      filename: req.files[key].name,
-      content: req.files[key].data
+  export const TestPage = () => {
+    const [base64, setBase64] = useState("")
+  
+    const onChange = (e) => {
+      const files = e.target.file;
+      const file = files[0];
+      getBase64(file)
     }
-  });
-
-  let mailOptions = {
-    from: 'whoever@whereever.net',
-    to: 'to-mail@mail.go',
-    subject: `Message from: Whoever`,
-    html: '<html></html>',
-    attachments: docs // <--- All you need here!!
-  };
-
-  transporter.sendMail(mailOptions, function (err, data) {
-    if (err) {
-      res.json({
-        status: 'fail',
-      });
-    } else {
-      console.log('== Message Sent ==');
-      res.json({
-        status: 'success',
-      });
+  
+    const onLoad = (fileString) => {
+      setBase64(fileString)
     }
-  });
-});
-
-
+  
+    const getBase64 = (file) => {
+      let reader = new FileReader();
+      reader.readAsDataURL(file)
+      reader.onload = () => {
+        onLoad(reader.result)
+      }
+    }
+    
+    const handleSubmit = (e) => {
+      fetch("https://dspzkaci62.execute-api.eu-west-2.amazonaws.com/send", {
+        mode: "no-cors",
+        method: "Post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type":  "application/json",
+        },
+        body: JSON.stringify({
+          senderName: "maxwell.cochrane+dev@gmail.com",
+          senderEmail: "maxwell.cochrane+dev@gmail.com",
+          message: "this is the message",
+          base64Data: base64,
+          date: new Date(),
+          fileName: "TEST_FILE_NAME",
+        }),
+      }
+    );
+  }
+}

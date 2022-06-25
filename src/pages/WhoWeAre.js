@@ -14,9 +14,8 @@ export const WhoWeAre = () => {
   const [biopic, bioState] = useSinglePrismicDocument("team");
   const [home, homeState] = useSinglePrismicDocument("who_we_are");
   const [menu, menuState] = useSinglePrismicDocument("menu");
-  const [footer, footerState] = useSinglePrismicDocument("footer");
 
-  const notFound = homeState.state === "failed" || menuState.state === "failed" || footerState.state === "failed" || bioState.state === "failed";
+  const notFound = homeState.state === "failed" || menuState.state === "failed" || bioState.state === "failed";
 
   useEffect(() => {
     if (homeState.state === "failed") {
@@ -25,9 +24,9 @@ export const WhoWeAre = () => {
   }, [homeState.state]);
 
   // Return the page if a document was retrieved from Prismic
-  if (home && menu && biopic && footer) {
+  if (home && menu && biopic) {
     return (
-      <Layout wrapperClass="page-content homepage" menuDoc={menu} footerDoc={footer}>
+      <Layout wrapperClass="page-content homepage" menuDoc={menu} footerDoc={menu}>
         <AboutUsBanner banner={home.data.homepage_banner[0]} /> 
         <section className="key-points-container section-container content-section">
           <div className="bullet-points">

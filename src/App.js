@@ -13,7 +13,7 @@ import { PrivacyPolicy } from "./pages/footer_pages/PrivacyPolicy";
 import { Preview } from "./pages/Preview";
 import { WhoWeAre } from "./pages/WhoWeAre";
 // import { Services } from "./pages/Services";
-// import { TestPage } from "./pages/testpage.test";
+import { TestPage } from "./pages/testpage.test";
 
 
 import ReactGA from "react-ga";
@@ -41,7 +41,7 @@ export const App = () => {
           <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />  
-          {/* <Route path="/test-page" element={<TestPage />} /> */}
+          <Route path="/test-page" element={<TestPage />} />
           {/* <Route path="/services" element={<Services />} />  */}
         </Routes>
       </BrowserRouter>
