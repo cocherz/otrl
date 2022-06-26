@@ -47,7 +47,7 @@ export const JobDesc = ({ job }) => {
       <div className="section-container-tb">
         <BulletPoints copy={job.copy_key_skills} />
       </div>
-
+      <PrismicRichText field={job.job_copy} /> 
       <PrismicRichText field={job.title_tools} />
       <div className="techPills" id="pills">
         {job.technologies.map((technology, i) => (

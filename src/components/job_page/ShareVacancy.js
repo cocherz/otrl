@@ -5,7 +5,7 @@ export const ShareVacany = ({ icons, job }) => {
 
 
   return (
-    <section className="section-container">
+    <section className="bottom-padding">
       <h2> Share this vacancy </h2>
       <div className="social-share-icons">
         <a href={`linkedin.com/sharing/share-offsite/?mini=true&url=${window.location.href}&title=${shareJobTile}%20role%20at%20Ontrack%20Retail&source=${window.location.hostname}`} aria-label="share this vacancy on linkedin">

@@ -4,16 +4,15 @@ import React from "react";
 const ImageLink = ({ imageLink }) => {
   return (
     <a href={imageLink.url} aria-label={"Find us on " + imageLink.image.alt + " here"}>
-    <li>
-      
+      <li>
         <img className="social-image " src={imageLink.image.url} alt={imageLink.image.alt} />
-      
-    </li>
+      </li>
     </a>
   );
 };
 
 const ContactInfo = ({ footerDoc }) => {
+
   return (
     <section className="footer-contact-section">
       <div className="socials-container">
@@ -29,9 +28,11 @@ const ContactInfo = ({ footerDoc }) => {
             <PrismicText field={footerDoc.email} />
           </h3>
         </a>
-        <h3 className="phone">
-          <PrismicText field={footerDoc.phone} />
-        </h3>
+        <a href={`tel:${footerDoc.phone.text}`}>
+          <h3 className="phone">
+            <PrismicText field={footerDoc.phone} />
+          </h3>
+        </a>
         <div className="otrl_copy">
           <PrismicText field={footerDoc.otrl_copy} />{" "}
           <a href="/contact-us">

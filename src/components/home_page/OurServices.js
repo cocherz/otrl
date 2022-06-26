@@ -1,13 +1,12 @@
 import React from "react";
-import { PrismicText } from "@prismicio/react";
+import { PrismicText, PrismicRichText } from "@prismicio/react";
 import { OurSericeCard } from "./OurServicesCard";
 import { PrimaryButton } from "../structure/common";
 
 export const OurServices = (data) => {
-  
   return (
     <section className="background">
-      <section className="content-section section-container-lr our-services ">
+      <section className="section-container-lr our-services ">
         <h2 className="center section-container-tb">
           <PrismicText field={data.data.body[0].primary.our_services_header} />
         </h2>
@@ -18,13 +17,13 @@ export const OurServices = (data) => {
         </section>
 
         <div className="our-service-copy center">
-          <PrismicText field={data.data.body[0].primary.our_services_copy} />
+          <PrismicRichText field={data.data.body[0].primary.our_services_copy} />
         </div>
-        <div className="our-service-tagline section-container-tb center">
+        <div className="our-service-tagline section-container-tb center bold black-text">
           <PrismicText field={data.data.body[0].primary.our_services_tagline} />
         </div>
         <div className="centered section-container-tb">
-          <PrimaryButton classNames="header-button margin-centered" redirect="/contact-us" copy="Contact Us" />
+          <PrimaryButton classNames="margin-centered" redirect="/contact-us" copy="Contact Us" />
         </div>
       </section>
     </section>

@@ -1,23 +1,18 @@
 import React from "react";
 import { useEffect } from "react";
-import {
-  useSinglePrismicDocument,
-  usePrismicDocumentByUID,
-  PrismicText,
-  PrismicImage,
-} from "@prismicio/react";
+import { useSinglePrismicDocument } from "@prismicio/react";
 import { Layout } from "../components/Layout";
 import { NotFound } from "./NotFound";
 import { ContactUsCopy } from "../components/contact_us_page/ContactModalCopy";
 import { ClientImages } from "../components/contact_us_page/ClientImages";
-import { ContactUsForm } from "../components/contact_us_page/ContactUsForm";
+import { ContactUsForm } from "../components/contact_us_page/ContactUsForm.test";
 
 export const Contact = () => {
-  const [menu, menuState] = useSinglePrismicDocument("menu");
-  const [contact, contactState] = useSinglePrismicDocument("contact");
+  const [main, mainState] = useSinglePrismicDocument("main");
+  const [contact, contactState] = useSinglePrismicDocument("contact_us_page");
 
   const notFound =
-    menuState.state === "failed" ||
+  mainState.state === "failed" ||
     contactState.state === "failed";
 
   useEffect(() => {
@@ -28,20 +23,27 @@ export const Contact = () => {
     }
   }, [contactState.state]);
 
-  if (contact && menu) {
-    console.log(contact);
+  if (contact && main) {
     return (
-      <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={menu}>
-        <div className="background">
-            <section className="contact-us-container content-section-tb ">
-              <div className="copy-and-images">
+      <Layout wrapperClass="homepage" menuDoc={main} footerDoc={main}>
+        <div className="background section-container-tb">
+          
+            <section className="contact-us-container margin-centered">
+              <div className="contact-us-a">
+                {" "}
                 <ContactUsCopy
                   header={contact.data.header_copy}
                   subHeader={contact.data.header_sub_copy}
-                />
-                <ClientImages image={contact.data} />
+                />{" "}
               </div>
-              <ContactUsForm />
+              <div className="contact-us-b">
+                <ClientImages image={contact.data} />{" "}
+              </div>
+              <div className="contact-us-c">
+                <div className="container-test"> 
+                <ContactUsForm />{" "}
+                </div>
+              </div>
             </section>
         </div>
       </Layout>

@@ -8,11 +8,11 @@ import { ClientImages } from "../components/contact_us_page/ClientImages";
 import { ContactUsForm } from "../components/contact_us_page/ContactUsForm.test";
 
 export const Contact = () => {
-  const [menu, menuState] = useSinglePrismicDocument("menu");
-  const [contact, contactState] = useSinglePrismicDocument("contact");
+  const [main, mainState] = useSinglePrismicDocument("main");
+  const [contact, contactState] = useSinglePrismicDocument("contact_us_page");
 
   const notFound =
-    menuState.state === "failed" ||
+  mainState.state === "failed" ||
     contactState.state === "failed";
 
   useEffect(() => {
@@ -23,9 +23,9 @@ export const Contact = () => {
     }
   }, [contactState.state]);
 
-  if (contact && menu) {
+  if (contact && main) {
     return (
-      <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={menu}>
+      <Layout wrapperClass="homepage" menuDoc={main} footerDoc={main}>
         <div className="background section-container-tb">
           
             <section className="contact-us-container margin-centered">

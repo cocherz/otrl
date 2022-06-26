@@ -12,16 +12,15 @@ const gaEvent = GATracker("Mobile-Header-click");
 const BurgerMenu = ({ setIsNavExpanded, isNavExpanded }) => {
   return (
     <div className="mobile-nav" alt="menu">
-      <button
+      <div
         aria-label={isNavExpanded ? "menu is collapsed, tap to open" : "menu is open, tap to close"}
-        className="hamburger"
         alt="menu"
         onClick={() => {
           setIsNavExpanded(!isNavExpanded);
         }}
       >
         {isNavExpanded ? <BurgerSVG /> :  <CrossSVG />}
-      </button>
+      </div>
       <div className={isNavExpanded ? "mobile-menu expanded" : "mobile--menu"}></div>
     </div>
   );
@@ -29,8 +28,8 @@ const BurgerMenu = ({ setIsNavExpanded, isNavExpanded }) => {
 
 export const MobileMenu = ({ menuLink,  }) => {
   return (
-    <div className="mobile-menu-item" onClick={() => gaEvent(menuLink.link.url)}>
-      <a href={menuLink.link.url} >
+      <a href={menuLink.link.url} className="mobile-menu-item" onClick={() => gaEvent(menuLink.link.url)}>
+   
         <div>
         <PrismicText field={menuLink.label} />
         <span aria-hidden="true">
@@ -39,9 +38,9 @@ export const MobileMenu = ({ menuLink,  }) => {
             <path d="M1 9L4.64645 5.35355C4.84171 5.15829 4.84171 4.84171 4.64645 4.64645L1 1" stroke="#D1D5DB" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
         </span>
-        </div>
-      </a>
+   
     </div>
+      </a>
   );
 };
 

@@ -1,46 +1,46 @@
 import * as prismic from "@prismicio/client";
 // Fill in your repository name
-export const repositoryName = "testingbuisnesssite";
+export const repositoryName = "otrl";
 
 export const client = prismic.createClient(repositoryName, {
   accessToken: "",
   
   routes: [
     {
-      type: "homepage",
+      type: "main",
       path: "/ ",
     },
-    {
-      type: "services",
-      path: "/services",
-    },
+    // {
+    //   type: "services",
+    //   path: "/services",
+    // },
     {
       type: "careers",
-      path: "/:uid",
+      path: "/careers",
     },
     {
-      type: "contact",
-      path: "/contact",
+      type: "contact_us_page",
+      path: "/contact-us",
     },
     {
-      type: "jobpost",
+      type: "job_post",
       path: "/careers/:uid",
     },
     {
-      type: "foo",
+      type: "x_cookie_policy",
       path: "/cookie-policy",
     },
     {
-      type: "foo",
+      type: "x_privacy_policy",
       path: "/privacy-policy",
     },
     {
-      type: "homepage",
+      type: "who_we_are",
       path: "/who-we-are",
     },
-    {
-      type: "page",
-      path: "/:uid",
-    },
+    // {
+    //   type: "page",
+    //   path: "/:uid",
+    // },
   ],
 });

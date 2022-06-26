@@ -4,18 +4,18 @@ import { Layout } from "../../components/Layout";
 import { NotFound } from "../NotFound";
 
 export const CookiePolicy = () => {
-  const [menu, menuState] = useSinglePrismicDocument("menu");
-  const [footer, footerState] = useSinglePrismicDocument("footer");
-    const [foo, fooState] = useSinglePrismicDocument("foo_cp")
+  const [main, mainState] = useSinglePrismicDocument("main");
+  
+  const [cookieDoc, cookieDocState] = useSinglePrismicDocument("x_cookie_policy")
 
-  const notFound = menuState.state === "failed" || footerState.state === "failed" || fooState === "failed";
+  const notFound = mainState.state === "failed" || cookieDocState === "failed";
 
-if (menu && foo) {
+if (main && cookieDoc) {
 
     return (
-      <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={footer}>
+      <Layout wrapperClass="homepage" menuDoc={main} footerDoc={main}>
         <section className="content-section section-container">
-        <PrismicRichText field={foo.data.cookie_policy} />
+        <PrismicRichText field={cookieDoc.data.cookie_policy} />
         </section>
       </Layout>
     );

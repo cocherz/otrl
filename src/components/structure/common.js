@@ -1,5 +1,5 @@
 import { useSinglePrismicDocument } from "@prismicio/react";
-import { PrismicText } from "@prismicio/react";
+import { PrismicText, PrismicRichText } from "@prismicio/react";
 import { NotFound } from "../../pages/NotFound";
 import React from "react";
 import Slider from "react-slick";
@@ -41,7 +41,7 @@ export default function useWindowDimensions() {
 export const PrimaryButton = ({ classNames, redirect, copy, clickAction }) => {
   return (
     <a href={redirect}>
-      <button className={`primary-button ${classNames}`} onClick={clickAction}> {copy}</button>
+      <button className={`primary-button ${classNames}`} onClick={clickAction} redirect={redirect}> {copy}</button>
     </a>
   );
 };
@@ -57,8 +57,8 @@ export const OurClients = (show) => {
   if (client) {
     
     return (
-      <section className="content-section">
-        <h2 className="page-heading">
+      <section className="partners-slider">
+        <h2 className="center">
           <PrismicText field={client.data.clients_and_partners_title} />
         </h2>
         <section className="client-images-carosel">
@@ -92,14 +92,14 @@ export const ClientFeedbackSlider = () => {
             return (
               <section key={i}>
                 <p className="feedback-quote">
-                  <span className="quoteMarks"> " </span>
+                  <span className="quoteMarks purple-text"> " </span>
                   <PrismicText field={feedback.client_feedback} />
-                  <span className="quoteMarks"> " </span>
+                  <span className="quoteMarks purple-text"> " </span>
                 </p>
                 <div className="title-job-feedback">
                   <PrismicText field={feedback.client_name} />
-                  <span> | </span>
-                  <PrismicText field={feedback.client_company_name} />
+                  <span className="purple-text bold"> | </span>
+                  <PrismicRichText field={feedback.client_company_name} />
                 </div>
                 <img className="client-image-centered" src={feedback.client_logo.url} alt={feedback.client_logo.alt}/>
               </section>
@@ -109,7 +109,7 @@ export const ClientFeedbackSlider = () => {
       </section>
     );
   } else if (notFound) {
-    return <NotFound />;
+    return null
   }
   return null;
 };

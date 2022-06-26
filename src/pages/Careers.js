@@ -9,11 +9,11 @@ import { QuoteSection } from "../components/careers_page/CareerQuote";
 import { ActiveJobs } from "../components/careers_page/activeJobs";
 
 export const Careers = () => {
-  const [menu, menuState] = useSinglePrismicDocument("menu");
+  const [main, mainState] = useSinglePrismicDocument("main");
   const [careers, careersState] = useSinglePrismicDocument("careers");
-  const [jobs, jobsState] = useAllPrismicDocumentsByType("jobpost");
+  const [jobs, jobsState] = useAllPrismicDocumentsByType("job_post");
 
-  const notFound = menuState.state === "failed"  || careersState.state === "failed" || jobsState.state === "falied";
+  const notFound = mainState.state === "failed"  || careersState.state === "failed" || jobsState.state === "falied";
 
   useEffect(() => {
     if (careersState.state === "failed") {
@@ -21,30 +21,26 @@ export const Careers = () => {
     }
   }, [careersState.state]);
 
-
-  console.log(jobs)
-
-
-  if (careers && menu && jobs) {
+  if (careers && main && jobs) {
     return  (
-      <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={menu}>
+      <Layout wrapperClass="homepage" menuDoc={main} footerDoc={main}>
         
         <section className="active-roles bottom-padding">
           <h2 className="page-heading heading-background">
-            <PrismicText field={careers.data.current_vacancies} />
+            <PrismicText field={main.data.current_vacancies} />
           </h2>
           <div className="flex">
             <div className="card_grid content">
               {jobs.map((job, i) => (
-                <ActiveJobs job={job} key={i} icons={menu.data} />
+                <ActiveJobs job={job} key={i} icons={main.data} />
               ))}
             </div>
           </div>
         </section>
         <section className="OtherRoles">
-          <OtherRole OtherRoleCopy={careers.data.banner_copy} OtherRoleButtonCopy={careers.data.banner_button_copy} />
+          <OtherRole OtherRoleCopy={main.data.banner_copy} OtherRoleButtonCopy={main.data.banner_button_copy} />
         </section>
-        <QuoteSection data={careers.data} />
+        <QuoteSection data={main.data} />
       </Layout>
     );
   } 

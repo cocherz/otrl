@@ -13,11 +13,11 @@ import { PrimaryButton } from "../components/structure/common";
 export const JobPost = () => {
   const { uid } = useParams();
 
-  const [menu, menuState] = useSinglePrismicDocument("menu");
-  const [job, jobState] = usePrismicDocumentByUID("jobpost", uid);
+  const [main, mainState] = useSinglePrismicDocument("main");
+  const [job, jobState] = usePrismicDocumentByUID("job_post", uid);
   const [careers, careersState] = useSinglePrismicDocument("careers");
 
-  const notFound = menuState.state === "failed" ||  careersState.state === "failed";
+  const notFound = mainState.state === "failed" ||  careersState.state === "failed";
 
   useEffect(() => {
     if (jobState.state === "failed") {
@@ -25,20 +25,20 @@ export const JobPost = () => {
     }
   }, [jobState.state]);
 
-  if (job && menu && careers) {
+  if (job && main && careers) {
     return (
-      <Layout wrapperClass="homepage" menuDoc={menu} footerDoc={menu}>
+      <Layout wrapperClass="homepage" menuDoc={main} footerDoc={main}>
         <div className="background">
           <section className="job-content content-section page-heading">
-            <JobSummary job={job.data} icons={menu.data} />
+            <JobSummary job={job.data} icons={main.data} />
             <div className="section-container desktop-hidden">
             <PrimaryButton classNames={"apply-btn desktop-hidden"} copy={"Apply"} clickAction={(e) => document.getElementById("pills").scrollIntoView()}/>
             </div>
-            <JobPageContent job={job.data} icons={menu.data} />
+            <JobPageContent job={job.data} icons={main.data} />
           </section>
-          <OtherRole OtherRoleCopy={careers.data.banner_copy} OtherRoleButtonCopy={careers.data.banner_button_copy} />
+          <OtherRole OtherRoleCopy={main.data.banner_copy} OtherRoleButtonCopy={main.data.banner_button_copy} />
         </div>
-        <QuoteSection data={careers.data} />
+        <QuoteSection data={main.data} />
       </Layout>
     );
   } else if (notFound) {

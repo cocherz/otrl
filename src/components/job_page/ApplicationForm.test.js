@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { GATracker } from "../structure/GoogleAnalytics"
+import { GATracker } from "../structure/GoogleAnalytics";
 import { emailValidate, validate, fileTypeValid } from "../structure/validation";
 
 export const ApplicationForm = ({ jobTitle }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [loading, setLoadingState] = useState();
   const [files, setFiles] = useState("");
   const [base64, setBase64] = useState("");
+  const [loading, setLoadingState] = useState();
   const [failedSend, setFailedSend] = useState(false);
 
   const gaEvent = GATracker(`Job-post-${jobTitle}`);
@@ -21,7 +21,6 @@ export const ApplicationForm = ({ jobTitle }) => {
     valid = firstNameValid && lastNameValid && firstNameValid && fileValid && emailValid;
 
     if (valid === true) {
-      
       gaEvent("Applied-for-job", "job application");
     }
     return valid;
@@ -29,42 +28,39 @@ export const ApplicationForm = ({ jobTitle }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isValid()){
-        const url = "https://9ms7dfz6i0.execute-api.eu-west-1.amazonaws.com/stage/send"
-        const config = {
-          mode: "no-cors",
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            senderName: "maxwell.cochrane+dev@gmail.com",
-            senderEmail: "maxwell.cochrane+dev@gmail.com",
-            subject: `${jobTitle} application from ${firstName} ${lastName}`,
-            message: `New application from ${firstName} ${lastName}`,
-            base64Data: base64,
-            fileName: files.name,
-          }),
-        }
-        console.log(config);
-        const response = await fetch(url, config).then(setLoadingState(true))
+    if (isValid()) {
+      const url = "https://9ms7dfz6i0.execute-api.eu-west-1.amazonaws.com/stage/send";
+      const config = {
+        mode: "no-cors",
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          senderName: "maxwell.cochrane+dev@gmail.com",
+          senderEmail: "maxwell.cochrane+dev@gmail.com",
+          subject: `${jobTitle} application from ${firstName} ${lastName}`,
+          message: `New application from ${firstName} ${lastName} ${email}`,
+          base64Data: base64,
+          fileName: files.name,
+        }),
+      };
+      console.log(config);
+      const response = await fetch(url, config).then(setLoadingState(true));
 
-        if (response.response = "ok") {
-          console.log(response)
-          console.log(response.status)
-          setLoadingState(false)
-          document.getElementById("unsubmitted").style.display = "none";
-          document.getElementById("submitted").style.display = "block";
-          return response
-        } else {
-          console.log(response)
-          setLoadingState(false)
-          setFailedSend(true)
-          console.log(response, "error")
-          return response
-        }
-      
+      if ((response.response = "ok")) {
+        setLoadingState(false);
+        document.getElementById("unsubmitted").style.display = "none";
+        document.getElementById("submitted").style.display = "block";
+        return response;
+      } else {
+        console.log(response);
+        setLoadingState(false);
+        setFailedSend(true);
+        console.log(response, "error");
+        return response;
+      }
     }
   };
 
@@ -73,20 +69,19 @@ export const ApplicationForm = ({ jobTitle }) => {
     setFiles(null);
     setFiles(files);
     removeStyle();
-    getBase64(files)
-  }
+    getBase64(files);
+  };
 
   const addFile = (e) => {
     const files = e.target.files[0];
     setFiles(null);
     setFiles(files);
     removeStyle();
-    getBase64(files)
-
+    getBase64(files);
   };
   const onLoad = (fileString) => {
-    setBase64(fileString.split(',')[1]);
-  }
+    setBase64(fileString.split(",")[1]);
+  };
   const getBase64 = (file) => {
     let reader = new FileReader();
     reader.readAsDataURL(file);
@@ -114,8 +109,7 @@ export const ApplicationForm = ({ jobTitle }) => {
         }}
         className="application-form"
       >
-
-          <h3 aria-label="Application form"> Application</h3>
+        <h3 aria-label="Application form"> Application</h3>
 
         <label aria-label="First name">
           <span aria-hidden="true"> First Name * </span>
@@ -156,7 +150,7 @@ export const ApplicationForm = ({ jobTitle }) => {
             onDragLeave={removeStyle}
             onDrop={(e) => {
               preventBubbling(e);
-              dropFile(e.dataTransfer.files)
+              dropFile(e.dataTransfer.files);
             }}
           >
             <label htmlFor="file-upload" aria-hidden="false">
@@ -182,27 +176,22 @@ export const ApplicationForm = ({ jobTitle }) => {
                 </div>
               )}
             </label>
-            {!files && (
-              <input
-                id="file-upload"
-                type="file"
-                accept=".pdf, .doc, .docx"
-                onChange={addFile}
-              />
-            )}
+            {!files && <input id="file-upload" type="file" accept=".pdf, .doc, .docx" onChange={addFile} />}
           </div>
           <h5 id="resume-error" className="error-message" aria-label="error, please attach a resume">
-          {" "}
-          * Please attach your resume in pdf, doc, or docx{" "}
-        </h5>
+            {" "}
+            * Please attach your resume in pdf, doc, or docx{" "}
+          </h5>
         </label>
-        
+
         <div className="submitCTA">
-            <button type="submit" value="Submit" className="primary-button wide-btn">
-              {loading ?  <div className="loader" /> : "Apply" }
-            </button>
+          <button type="submit" value="Submit" className="primary-button wide-btn">
+            {loading ? <div className="loader" /> : "Apply"}
+          </button>
         </div>
-        {!failedSend ? true : (
+        {!failedSend ? (
+          true
+        ) : (
           <h5 id="send-error" className="message" aria-label="Email is invalid">
             * Unfourtunatley there was an error, please try again
           </h5>
@@ -215,5 +204,3 @@ export const ApplicationForm = ({ jobTitle }) => {
     </section>
   );
 };
-
-

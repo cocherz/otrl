@@ -7,12 +7,15 @@ import { ReactComponent as LogoSVG } from "../../images/logo.svg";
 
 const MenuLink = ({ menuLink, i }) => {
   const gaEvent = GATracker("Web-Header-click");
+  console.log(menuLink)
   return (
-    <PrismicLink field={menuLink.link} onClick={() => gaEvent(menuLink.link.url)}>
-      <div className={window.location.pathname.split("/")[1] === menuLink.link.url.split("/")[1] ? "bolden centered-text" : "centered-text"}>
-        <PrismicText field={menuLink.label} />
-      </div>
+    
+    <PrismicLink field={menuLink.link} onClick={() => gaEvent(menuLink.link.uid)}>
+       <div className={window.location.pathname.split("/")[1] === menuLink.link.uid ? "bolden centered-text" : "centered-text"}>
+        <PrismicText field={menuLink.label}/>
+      </div> 
     </PrismicLink>
+    
   );
 };
 
