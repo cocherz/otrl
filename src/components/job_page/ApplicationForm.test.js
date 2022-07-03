@@ -1,24 +1,37 @@
 import React, { useState } from "react";
 import { GATracker } from "../structure/GoogleAnalytics";
-import { emailValidate, validate, fileTypeValid } from "../structure/validation";
+import { emailValidate, validate, fileTypeValid, fileSizeValidate } from "../structure/validation";
 
 export const ApplicationForm = ({ jobTitle }) => {
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [files, setFiles] = useState("");
   const [base64, setBase64] = useState("");
+
   const [loading, setLoadingState] = useState();
   const [failedSend, setFailedSend] = useState(false);
 
+  const [err, setErr] = useState({
+    firstNameErr: "* Please enter your first name",
+    lastNameErr: "* Please enter your last name",
+    emailErr: "* Please check your email",
+    fileErr: "* Please attach your resume in pdf, doc, or docx",
+    fileSizeErr: "* File size should be less than 4mb",
+    submitErr: "* Unfourtunatley there was an error, please try again"
+  });
+
   const gaEvent = GATracker(`Job-post-${jobTitle}`);
+
   const isValid = () => {
     let valid = true;
     let emailValid = emailValidate(email);
     let lastNameValid = validate(lastName, "last-name");
     let firstNameValid = validate(firstName, "first-name");
     let fileValid = fileTypeValid(files, "resume");
-    valid = firstNameValid && lastNameValid && firstNameValid && fileValid && emailValid;
+    let fileSizeValid = fileSizeValidate(files.size, "resume")
+    valid = firstNameValid && lastNameValid && firstNameValid && fileValid && emailValid && fileSizeValid;
 
     if (valid === true) {
       gaEvent("Applied-for-job", "job application");
@@ -29,13 +42,12 @@ export const ApplicationForm = ({ jobTitle }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isValid()) {
-      const url = "https://9ms7dfz6i0.execute-api.eu-west-1.amazonaws.com/stage/send";
+      const url = "https://9ms7dfz6i0.execute-api.eu-west-1.amazonaws.com/stage/SendEmail";
       const config = {
-        mode: "no-cors",
         method: "POST",
+     
         headers: {
           Accept: "application/json",
-          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           senderName: "maxwell.cochrane+dev@gmail.com",
@@ -46,24 +58,21 @@ export const ApplicationForm = ({ jobTitle }) => {
           fileName: files.name,
         }),
       };
-      console.log(config);
-      const response = await fetch(url, config).then(setLoadingState(true));
 
-      if ((response.response = "ok")) {
+      let resp = await fetch(url, config)
+        .then(
+          setLoadingState(true))
+
+      if ((resp.ok)) {
         setLoadingState(false);
         document.getElementById("unsubmitted").style.display = "none";
         document.getElementById("submitted").style.display = "block";
-        return response;
       } else {
-        console.log(response);
         setLoadingState(false);
         setFailedSend(true);
-        console.log(response, "error");
-        return response;
       }
     }
   };
-
   const dropFile = (e) => {
     const files = e[0];
     setFiles(null);
@@ -71,7 +80,6 @@ export const ApplicationForm = ({ jobTitle }) => {
     removeStyle();
     getBase64(files);
   };
-
   const addFile = (e) => {
     const files = e.target.files[0];
     setFiles(null);
@@ -89,25 +97,24 @@ export const ApplicationForm = ({ jobTitle }) => {
       onLoad(reader.result);
     };
   };
-
   const preventBubbling = (e) => {
     e.stopPropagation();
     e.preventDefault();
     document.getElementById("resume").style.background = "#f8fbff";
   };
-
   const removeStyle = () => {
     document.getElementById("resume").style.background = "#ffffff";
   };
 
   return (
-    <section>
+    <section id="application-form">
       <form
         id="unsubmitted"
         onSubmit={(e) => {
           handleSubmit(e);
         }}
-        className="application-form"
+        className="application-form margin-container-tb"
+        method="POST"
       >
         <h3 aria-label="Application form"> Application</h3>
 
@@ -116,8 +123,7 @@ export const ApplicationForm = ({ jobTitle }) => {
           <input className="input-field" name="firstName" id="first-name" type="text" checked={firstName} onChange={(e) => setFirstName(e.target.value)} />
         </label>
         <h5 id="first-name-error" className="error-message" aria-label="First name is invalid">
-          {" "}
-          * Please enter your first name{" "}
+          {err.firstNameErr}
         </h5>
 
         <label aria-label="Last name">
@@ -126,17 +132,13 @@ export const ApplicationForm = ({ jobTitle }) => {
         </label>
 
         <h5 id="last-name-error" className="error-message" aria-label="Last name is invalid">
-          {" "}
-          * Please enter your last name{" "}
+          {err.lastNameErr}
         </h5>
         <label aria-label="Email Address">
           <span aria-hidden="true"> Email Address * </span>
           <input className="input-field" name="email" id="email" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
         </label>
-        <h5 id="email-error" className="error-message" aria-label="Email is invalid">
-          {" "}
-          * Please check your email{" "}
-        </h5>
+        <h5 id="email-error" className="error-message" aria-label="Email is invalid">{err.emailErr}</h5>
         <label>
           <span aria-hidden="true"> Resume * </span>
           <div
@@ -169,7 +171,7 @@ export const ApplicationForm = ({ jobTitle }) => {
               {!files && (
                 <div className="cursorpointer">
                   <strong>
-                    <span>Drop your resume here </span> <span className="purple-text cursorpointer"> or browse </span>
+                    <span>Drop your resume here </span> <span className="purple-text"> or browse </span>
                   </strong>
                   <br />
                   <span>Max. file size: 4MB (pdf, doc, docx) </span>
@@ -178,10 +180,8 @@ export const ApplicationForm = ({ jobTitle }) => {
             </label>
             {!files && <input id="file-upload" type="file" accept=".pdf, .doc, .docx" onChange={addFile} />}
           </div>
-          <h5 id="resume-error" className="error-message" aria-label="error, please attach a resume">
-            {" "}
-            * Please attach your resume in pdf, doc, or docx{" "}
-          </h5>
+          <h5 id="resume-error" className="error-message" aria-label="error, please attach a resume"> {err.fileErr} </h5>
+          <h5 id="resume-size-error" className="error-message" aria-label="error, please attach a resume"> {err.fileSizeErr}</h5>
         </label>
 
         <div className="submitCTA">
@@ -193,7 +193,7 @@ export const ApplicationForm = ({ jobTitle }) => {
           true
         ) : (
           <h5 id="send-error" className="message" aria-label="Email is invalid">
-            * Unfourtunatley there was an error, please try again
+            {err.submitErr}
           </h5>
         )}
       </form>

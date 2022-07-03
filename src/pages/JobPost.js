@@ -17,7 +17,16 @@ export const JobPost = () => {
   const [job, jobState] = usePrismicDocumentByUID("job_post", uid);
   const [careers, careersState] = useSinglePrismicDocument("careers");
 
-  const notFound = mainState.state === "failed" ||  careersState.state === "failed";
+  const notFound = mainState.state === "failed" || careersState.state === "failed";
+
+  const scrollToApply = () => {
+    const applicationForm = document.getElementById("application-form");
+    const yOffSet = -90
+    const y = applicationForm.getBoundingClientRect().top + window.pageYOffset + yOffSet;
+    window.scrollTo({top: y, behavior: 'smooth'});
+
+    
+  };
 
   useEffect(() => {
     if (jobState.state === "failed") {
@@ -32,7 +41,7 @@ export const JobPost = () => {
           <section className="job-content content-section page-heading">
             <JobSummary job={job.data} icons={main.data} />
             <div className="section-container desktop-hidden">
-            <PrimaryButton classNames={"apply-btn desktop-hidden"} copy={"Apply"} clickAction={(e) => document.getElementById("pills").scrollIntoView()}/>
+              <PrimaryButton classNames={"apply-btn desktop-hidden"} copy={"Apply"} clickAction={(e) => scrollToApply()} />
             </div>
             <JobPageContent job={job.data} icons={main.data} />
           </section>

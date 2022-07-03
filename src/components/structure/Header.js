@@ -7,7 +7,6 @@ import { ReactComponent as LogoSVG } from "../../images/logo.svg";
 
 const MenuLink = ({ menuLink, i }) => {
   const gaEvent = GATracker("Web-Header-click");
-  console.log(menuLink)
   return (
     
     <PrismicLink field={menuLink.link} onClick={() => gaEvent(menuLink.link.uid)}>

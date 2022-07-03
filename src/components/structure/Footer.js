@@ -11,30 +11,30 @@ const ImageLink = ({ imageLink }) => {
   );
 };
 
-const ContactInfo = ({ footerDoc }) => {
+const ContactInfo = ({ footerData }) => {
 
   return (
     <section className="footer-contact-section">
       <div className="socials-container">
         <ul>
-          {footerDoc.socials.map((imageLink, i) => (
+          {footerData.socials.map((imageLink, i) => (
             <ImageLink imageLink={imageLink} key={i} />
           ))}
         </ul>
       </div>
       <section className="footer-contact-details">
-        <a href={`mailto:${footerDoc.email[0].text}`}>
+        <a href={`mailto:${footerData.email[0].text}`}>
           <h3 className="email">
-            <PrismicText field={footerDoc.email} />
+            <PrismicText field={footerData.email} />
           </h3>
         </a>
-        <a href={`tel:${footerDoc.phone.text}`}>
+        <a href={`tel:${footerData.phone.text}`}>
           <h3 className="phone">
-            <PrismicText field={footerDoc.phone} />
+            <PrismicText field={footerData.phone} />
           </h3>
         </a>
         <div className="otrl_copy">
-          <PrismicText field={footerDoc.otrl_copy} />{" "}
+          <PrismicText field={footerData.otrl_copy} />{" "}
           <a href="/contact-us">
             <span className="purple-text"> Contact us</span>
           </a>
@@ -71,24 +71,24 @@ const FooterLinks = ({ footerTitle, footerLinks }) => {
   );
 };
 
-export const Footer = ({ footerDoc }) => {
-  if (footerDoc) {
+export const Footer = ({ footerData }) => {
+  if (footerData) {
     return (
       <footer className="footer-container">
         <div className="footer-content-container">
-          <ContactInfo footerDoc={footerDoc.data} />
+          <ContactInfo footerData={footerData} />
           <section className="footer-links-area">
-            <FooterLinks footerTitle={footerDoc.data.company} footerLinks={footerDoc.data.company_links} />
-            <FooterLinks footerTitle={footerDoc.data.services} footerLinks={footerDoc.data.services_links} />
-            <FooterLinks footerTitle={footerDoc.data.legal} footerLinks={footerDoc.data.legal_links} />
+            <FooterLinks footerTitle={footerData.company} footerLinks={footerData.company_links} />
+            <FooterLinks footerTitle={footerData.services} footerLinks={footerData.services_links} />
+            <FooterLinks footerTitle={footerData.legal} footerLinks={footerData.legal_links} />
           </section>
         </div>
         <section className="footer-copy">
           <div className="copyright">
-            <PrismicText field={footerDoc.data.copyright} />
+            <PrismicText field={footerData.copyright} />
           </div>
           <div className="address">
-            <PrismicText field={footerDoc.data.company_address} />
+            <PrismicText field={footerData.company_address} />
           </div>
         </section>
       </footer>

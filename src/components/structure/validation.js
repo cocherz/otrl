@@ -25,7 +25,7 @@ export const validate = (x, ...arg) => {
 };
 
 export const fileTypeValid = (x, ...arg) => {
-  
+    // eslint-disable-next-line
   if (x == null || x == "") {
     document.getElementById(`${arg[0]}-error`).style.display = "block";
     document.getElementById(`${arg[0]}`).style.border = "1px solid red";
@@ -36,3 +36,16 @@ export const fileTypeValid = (x, ...arg) => {
     return true
   }
 };
+
+export const fileSizeValidate = (size, ...arg) => {
+  // eslint-disable-next-line
+  if (size >= 4100000){
+    document.getElementById(`${arg[0]}-size-error`).style.display = "block";
+    document.getElementById(`${arg[0]}`).style.border = "1px solid red";
+    return false;
+  } else {
+    document.getElementById(`${arg[0]}-size-error`).style.display = "none";
+    document.getElementById(`${arg[0]}`).style.border = "1px solid #d1d5db";
+    return true
+  }
+}

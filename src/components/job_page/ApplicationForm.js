@@ -1,14 +1,26 @@
 import React, { useState } from "react";
 import { GATracker } from "../structure/GoogleAnalytics";
-import { emailValidate, validate } from "../structure/validation";
+import { emailValidate, validate, fileTypeValid, fileSizeValidate } from "../structure/validation";
 
 export const ApplicationForm = ({ jobTitle }) => {
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [email, setEmail] = useState();
-  const [files, setFiles] = useState();
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [files, setFiles] = useState("");
+  const [base64, setBase64] = useState("");
+
   const [loading, setLoadingState] = useState();
-  // const [failedSend, setFailedSend] = useState(true);
+  const [failedSend, setFailedSend] = useState(false);
+
+  const [err, setErr] = useState({
+    firstNameErr: "* Please enter your first name",
+    lastNameErr: "* Please enter your last name",
+    emailErr: "* Please check your email",
+    fileErr: "* Please attach your resume in pdf, doc, or docx",
+    fileSizeErr: "* File size should be less than 4mb",
+    submitErr: "* Unfourtunatley there was an error, please try again"
+  });
 
   const gaEvent = GATracker(`Job-post-${jobTitle}`);
 
@@ -17,50 +29,92 @@ export const ApplicationForm = ({ jobTitle }) => {
     let emailValid = emailValidate(email);
     let lastNameValid = validate(lastName, "last-name");
     let firstNameValid = validate(firstName, "first-name");
-    let fileValid = validate(files, "resume");
-    valid = firstNameValid && lastNameValid && firstNameValid && fileValid && emailValid;
+    let fileValid = fileTypeValid(files, "resume");
+    let fileSizeValid = fileSizeValidate(files.size, "resume")
+    valid = firstNameValid && lastNameValid && firstNameValid && fileValid && emailValid && fileSizeValid;
 
     if (valid === true) {
-      document.getElementById("unsubmitted").style.display = "none";
-      document.getElementById("submitted").style.display = "block";
       gaEvent("Applied-for-job", "job application");
     }
     return valid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (isValid()) {
-      console.log(isValid());
-      setLoadingState(true);
+      const url = "https://9ms7dfz6i0.execute-api.eu-west-1.amazonaws.com/stage/SendEmail";
+      const config = {
+        method: "POST",
+     
+        headers: {
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          senderName: "maxwell.cochrane+dev@gmail.com",
+          senderEmail: "maxwell.cochrane+dev@gmail.com",
+          subject: `${jobTitle} application from ${firstName} ${lastName}`,
+          message: `New application from ${firstName} ${lastName} ${email}`,
+          base64Data: base64,
+          fileName: files.name,
+        }),
+      };
+
+      let resp = await fetch(url, config)
+        .then(
+          setLoadingState(true))
+
+      if ((resp.ok)) {
+        setLoadingState(false);
+        document.getElementById("unsubmitted").style.display = "none";
+        document.getElementById("submitted").style.display = "block";
+      } else {
+        setLoadingState(false);
+        setFailedSend(true);
+      }
     }
   };
-
-  const addFile = (resume) => {
-    console.log(resume);
+  const dropFile = (e) => {
+    const files = e[0];
     setFiles(null);
-    setFiles(resume);
+    setFiles(files);
     removeStyle();
+    getBase64(files);
   };
-
+  const addFile = (e) => {
+    const files = e.target.files[0];
+    setFiles(null);
+    setFiles(files);
+    removeStyle();
+    getBase64(files);
+  };
+  const onLoad = (fileString) => {
+    setBase64(fileString.split(",")[1]);
+  };
+  const getBase64 = (file) => {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      onLoad(reader.result);
+    };
+  };
   const preventBubbling = (e) => {
     e.stopPropagation();
     e.preventDefault();
     document.getElementById("resume").style.background = "#f8fbff";
   };
-
   const removeStyle = () => {
     document.getElementById("resume").style.background = "#ffffff";
   };
 
   return (
-    <section>
+    <section id="application-form">
       <form
         id="unsubmitted"
         onSubmit={(e) => {
           handleSubmit(e);
         }}
-        className="application-form"
+        className="application-form margin-container-tb"
+        method="POST"
       >
         <h3 aria-label="Application form"> Application</h3>
 
@@ -69,8 +123,7 @@ export const ApplicationForm = ({ jobTitle }) => {
           <input className="input-field" name="firstName" id="first-name" type="text" checked={firstName} onChange={(e) => setFirstName(e.target.value)} />
         </label>
         <h5 id="first-name-error" className="error-message" aria-label="First name is invalid">
-          {" "}
-          * Please enter your first name{" "}
+          {err.firstNameErr}
         </h5>
 
         <label aria-label="Last name">
@@ -79,22 +132,19 @@ export const ApplicationForm = ({ jobTitle }) => {
         </label>
 
         <h5 id="last-name-error" className="error-message" aria-label="Last name is invalid">
-          {" "}
-          * Please enter your last name{" "}
+          {err.lastNameErr}
         </h5>
         <label aria-label="Email Address">
           <span aria-hidden="true"> Email Address * </span>
           <input className="input-field" name="email" id="email" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
         </label>
-        <h5 id="email-error" className="error-message" aria-label="Email is invalid">
-          {" "}
-          * Please check your email{" "}
-        </h5>
+        <h5 id="email-error" className="error-message" aria-label="Email is invalid">{err.emailErr}</h5>
         <label>
           <span aria-hidden="true"> Resume * </span>
           <div
             className="custom-file-upload"
             id="resume"
+            accept=".pdf, .doc, .docx"
             onDragEnter={preventBubbling}
             onDragOver={preventBubbling}
             onPointerOver={preventBubbling}
@@ -102,7 +152,7 @@ export const ApplicationForm = ({ jobTitle }) => {
             onDragLeave={removeStyle}
             onDrop={(e) => {
               preventBubbling(e);
-              addFile(e.dataTransfer.files);
+              dropFile(e.dataTransfer.files);
             }}
           >
             <label htmlFor="file-upload" aria-hidden="false">
@@ -114,54 +164,38 @@ export const ApplicationForm = ({ jobTitle }) => {
                     e.preventDefault();
                   }}
                 >
-                  <h3 className="banner-content"> {files[0].name.substring(0, 26) + "..."} </h3>
+                  <h3 className="banner-content"> {files.name.substring(0, 26) + "..."} </h3>
                   <span> click to remove </span>
                 </div>
               )}
               {!files && (
                 <div className="cursorpointer">
                   <strong>
-                    <span>Drop your resume here </span> <span className="purple-text cursorpointer"> or browse </span>
+                    <span>Drop your resume here </span> <span className="purple-text"> or browse </span>
                   </strong>
                   <br />
                   <span>Max. file size: 4MB (pdf, doc, docx) </span>
                 </div>
               )}
             </label>
-            {!files && (
-              <input
-                id="file-upload"
-                type="file"
-                accept=".pdf,.doc,.docx"
-                onChange={async (e) => {
-                  addFile(e.target.files);
-                }}
-              />
-            )}
+            {!files && <input id="file-upload" type="file" accept=".pdf, .doc, .docx" onChange={addFile} />}
           </div>
-          <h5 id="resume-error" className="error-message" aria-label="please attach a resume">
-            {" "}
-            * Please attach your resume{" "}
-          </h5>
+          <h5 id="resume-error" className="error-message" aria-label="error, please attach a resume"> {err.fileErr} </h5>
+          <h5 id="resume-size-error" className="error-message" aria-label="error, please attach a resume"> {err.fileSizeErr}</h5>
         </label>
 
         <div className="submitCTA">
-          {loading ? (
-            <div className="primary-button">
-              {" "}
-              <div className="loader"> </div>{" "}
-            </div>
-          ) : (
-            <button type="submit" value="Submit" className="primary-button wide-btn">
-              Apply
-            </button>
-          )}
+          <button type="submit" value="Submit" className="primary-button wide-btn">
+            {loading ? <div className="loader" /> : "Apply"}
+          </button>
         </div>
-        {/* {failedSend ? null : (
+        {!failedSend ? (
+          true
+        ) : (
           <h5 id="send-error" className="message" aria-label="Email is invalid">
-            * failed to send, please try again
+            {err.submitErr}
           </h5>
-        )} */}
+        )}
       </form>
       <div className="application-form " id="submitted">
         {" "}

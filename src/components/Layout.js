@@ -18,7 +18,7 @@ export const Layout = ({ wrapperClass, menuDoc, footerDoc, children }) => {
     <div className={wrapperClass}>
       <Header menuDoc={menuDoc} />
       {children}
-      <Footer footerDoc={footerDoc}/>
+      <Footer footerData={footerDoc.data}/>
     </div>
   );
 };

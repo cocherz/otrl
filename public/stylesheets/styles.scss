@@ -86,6 +86,9 @@ h2.subheading {
 .margin-centered {
     margin: auto;
 }
+.margin-container-tb {
+    margin: 20px 0px;
+}
 .section-container-tb {
     padding: 20px 0px;
 }
@@ -201,7 +204,7 @@ button.primary-button:hover {
     margin: auto;
     text-align: center;
     max-width: 950px;
-    padding-top: 20px;
+    padding-top: 50px;
 }
 
 .our-service-card {
@@ -226,8 +229,8 @@ button.primary-button:hover {
 }
 
 .service-card-image {
-    max-width: 120px;
-    max-height: 120px;
+    max-width: 170px;
+    max-height: 170px;
 }
 /* About us Banner */
 .quoteSection {
@@ -395,6 +398,7 @@ button.primary-button:hover {
 
 .footer-title {
     color: #1f2937;
+    padding-bottom: 10px;
 }
 
 .footer-links {
@@ -441,6 +445,7 @@ button.primary-button:hover {
     grid-template-columns: 50% 50%;
     grid-template-rows: auto auto;
     grid-auto-flow: column;
+    margin: 20px auto;
 }
 
 .contact-us-a {
@@ -627,7 +632,6 @@ button.primary-button:hover {
 
 .share-and-apply {
     padding: 0 20px 0 120px;
-
     height: fit-content;
     position: -webkit-sticky;
     position: sticky;
@@ -764,6 +768,7 @@ a .purple-text:hover {
         flex-wrap: wrap;
         flex-direction: row;
         width: 100%;
+        margin: auto;
     }
 
     .contact-us-b {
@@ -828,16 +833,15 @@ a .purple-text:hover {
         font-size: 22px;
         line-height: 40px;
     }
-    p {
+    p, textarea {
         font-style: normal;
         font-weight: 400;
         font-size: 15px;
         line-height: 22px;
     }
     h2.page-heading {
-        text-align: left;
-        margin: 20px;
-        background-color: var(--light-bg-color);
+        padding: 20px;
+        /* background-color: var(--light-bg-color); */
     }
     .partners-slider{
         padding-top: 20px;
@@ -1053,7 +1057,8 @@ a .purple-text:hover {
 #submitted,
 #message-error,
 #resume-error,
-#resume-file-error {
+#resume-file-error,
+#resume-size-error {
     display: none;
 }
 #resume-error {
@@ -1221,4 +1226,46 @@ a .purple-text:hover {
 .service-page {
     max-width: 1140px;
     margin: auto;
+}
+
+
+.cookie-consent-pop-up{
+    background-color: #1f2937;
+}
+
+.cc-pop-up{
+ max-width: 100vw;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ padding: 20px 10px;
+}
+
+.cc-buttons{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: auto;
+}
+.btn{
+ padding: 15px 20px;
+ border-radius: 10px;
+ border-style: none;
+ cursor: pointer;
+ font-weight: 700;
+ font-size: medium;
+ color: var(--light-bg-color);
+}
+.reject-btn{
+    background-color: var(--light-text-hover);
+}
+.reject-btn:hover{
+    background-color: var(--light-purple);
+}
+
+.accept-btn{
+    background-color: var(--main-purple);
+}
+.accept-btn:hover{
+    background-color: var(--light-purple);
 }
