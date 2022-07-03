@@ -12,7 +12,7 @@ export const ContactUsForm = () => {
   const [message, setMessage] = useState();
   const [loading, setLoadingState] = useState();
   const [failedSend, setFailedSend] = useState(false);
-  const [err, setErr] = useState({
+  const [err] = useState({
     firstNameErr: "* Please enter your first name",
     lastNameErr: "* Please enter your last name",
     emailErr: "* Please check your email",

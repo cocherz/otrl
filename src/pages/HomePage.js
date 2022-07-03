@@ -11,16 +11,14 @@ export const HomePage = () => {
 
   const [home, homeState] = useSinglePrismicDocument("home_page");
   const [main, mainState] = useSinglePrismicDocument("main")
-  const notFound = mainState.state === "failed" || homeState.state === "failed";
+
+const notFound = homeState === "Failed" || mainState === "failed"
 
   useEffect(() => {
     if (homeState.state === "failed") {
       console.warn(`${main} Homepage document was not found. Make sure it exists in your Prismic repository.`);
     }
   }, [homeState.state]);
-
-
-
 
 
   if (main && home) {

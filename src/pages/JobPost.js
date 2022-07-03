@@ -17,7 +17,7 @@ export const JobPost = () => {
   const [job, jobState] = usePrismicDocumentByUID("job_post", uid);
   const [careers, careersState] = useSinglePrismicDocument("careers");
 
-  const notFound = mainState.state === "failed" || careersState.state === "failed";
+  const notFound = mainState.state === "failed" || careersState.state === "failed" || jobState.state === "failed";
 
   const scrollToApply = () => {
     const applicationForm = document.getElementById("application-form");

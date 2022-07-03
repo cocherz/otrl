@@ -3,16 +3,13 @@ import { PrismicProvider, PrismicToolbar } from "@prismicio/react";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 
 import { client, repositoryName } from "./prismic";
-import { HomePage } from "./pages/HomePage.test";
+import { HomePage } from "./pages/HomePage";
 import { Careers } from "./pages/Careers";
-import { Contact } from "./pages/Contact.test";
+import { Contact } from "./pages/Contact";
 import { JobPost } from "./pages/JobPost";
-// import { NotFound } from "./pages/NotFound";
 import { CookiePolicy } from "./pages/footer_pages/CookiePolicy";
 import { PrivacyPolicy } from "./pages/footer_pages/PrivacyPolicy";
-// import { Preview } from "./pages/Preview";
 import { WhoWeAre } from "./pages/WhoWeAre";
-// import { Services } from "./pages/Services";
 import { TestPage } from "./pages/testpage.test";
 
 import ReactGA from "react-ga";
@@ -33,15 +30,9 @@ export const App = () => {
           <Route path="/careers/:uid" element={<JobPost />} />
           <Route path="/who-we-are" element={<WhoWeAre />} />
           <Route path="/test-page" element={<TestPage />} />
-
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="/contact-us" element={<Contact />} />
-          {/*
-          <Route path="/preview" element={<Preview />} />
-          <Route path="*" element={<NotFound />} />  
-         */}
-          {/* <Route path="/services" element={<Services />} />  */}
         </Routes>
       </BrowserRouter>
       <PrismicToolbar repositoryName={repositoryName} />

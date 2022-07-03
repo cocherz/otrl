@@ -13,7 +13,7 @@ export const ApplicationForm = ({ jobTitle }) => {
   const [loading, setLoadingState] = useState();
   const [failedSend, setFailedSend] = useState(false);
 
-  const [err, setErr] = useState({
+  const [err] = useState({
     firstNameErr: "* Please enter your first name",
     lastNameErr: "* Please enter your last name",
     emailErr: "* Please check your email",
@@ -181,7 +181,7 @@ export const ApplicationForm = ({ jobTitle }) => {
             {!files && <input id="file-upload" type="file" accept=".pdf, .doc, .docx" onChange={addFile} />}
           </div>
           <h5 id="resume-error" className="error-message" aria-label="error, please attach a resume"> {err.fileErr} </h5>
-          <h5 id="resume-size-error" className="error-message" aria-label="error, please attach a resume"> {err.fileSizeErr}</h5>
+          <h5 id="resume-size-error" className="error-message" aria-label="error, resume file size too large, please ensure its less than 4mb"> {err.fileSizeErr}</h5>
         </label>
 
         <div className="submitCTA">
