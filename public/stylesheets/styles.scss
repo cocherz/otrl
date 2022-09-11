@@ -35,10 +35,12 @@ footer {
 }
 
 h2.page-heading,
-h2.page-heading-center {
+h2.page-heading-center,
+h1.page-heading,
+h1.page-heading-center {
     text-align: center;
 }
-h2.subheading {
+h1.subheading {
     line-height: 50px;
     padding-left: 20px;
 }
@@ -89,6 +91,10 @@ h2.subheading {
 .margin-container-tb {
     margin: 20px 0px;
 }
+.margin-container-tb-s {
+    margin: 15px 0px;
+}
+
 .section-container-tb {
     padding: 20px 0px;
 }
@@ -788,6 +794,7 @@ a .purple-text:hover {
     }
     .contact-us-form {
         padding: 20px;
+        border-radius: 0px;
     }
 
     .contact-us-b,
@@ -797,6 +804,8 @@ a .purple-text:hover {
     }
 }
 @media (max-width: 800px) {
+
+    
     .our-service-cards {
         grid-template-columns: 100%;
         margin: auto;
@@ -815,9 +824,11 @@ a .purple-text:hover {
         position: relative;
     }
     h1 {
-        font-size: 22px;
+        font-family: "DM Sans";
+        font-style: normal;
         font-weight: 700;
-        line-height: 29px;
+        font-size: 22px;
+        line-height: 40px;
     }
     h2 {
         font-family: "DM Sans";
@@ -839,7 +850,7 @@ a .purple-text:hover {
         font-size: 15px;
         line-height: 22px;
     }
-    h2.page-heading {
+    h2.page-heading, h1.page-heading {
         padding: 20px;
         /* background-color: var(--light-bg-color); */
     }
@@ -980,15 +991,25 @@ a .purple-text:hover {
     .jobHeaders {
         padding: 0;
     }
-
-    .client-images {
+    /* .client-images .li {
         display: flex;
         flex-wrap: wrap;
         gap: 17px;
         align-items: center;
         overflow-x: hidden;
-    }
+    } */
 }
+
+
+
+.client-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+    align-items: center;
+    overflow-x: hidden;
+}
+
 
 /* client and partners styling */
 

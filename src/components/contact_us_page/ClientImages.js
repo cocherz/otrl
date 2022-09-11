@@ -9,13 +9,15 @@ export const ClientImages = ({ image }) => {
           <PrismicText field={image.image_tagline} />
         </h3>
       </div>
-      <div className="client-images">
+      <ol className="client-images">
         {image.client_image.map((pic, i) => {
             return(
-          <img className="client-image" src={pic.img.url} alt={pic.img.alt} key={i}/>
+              <li key={i}>
+          <img className="client-image" src={pic.img.url} alt={pic.img.alt} />
+          </li>
             )
         })}
-      </div>
+      </ol>
     </section>
   );
 };

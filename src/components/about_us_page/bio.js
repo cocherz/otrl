@@ -8,19 +8,19 @@ import { PrimaryButton } from "../structure/common";
 export const Bio = ({ biopic }) => (
   <div className="meet_the_team_section">
     <div className="meet_the_team_title">
-      <h2> Meet the team </h2>
+      <h1> Meet the team </h1>
     </div>
     <div className="flex">
       <ul className="card_grid">
         {biopic.map((member, i) => (
-          <a href={member.linkedin_url.url} key={i}>
-            <li>
+          
+            <li key={i}>
+              <a href={member.linkedin_url.url} >
               <section className="team_member">
                 <img
                   src={member.headshot.url}
                   className="headshot centerImage padDown"
-                  aria-label={"Image of " + member.full_name[0].text + ", " + member.job_title[0].text + "at Ontrack Retail"}
-                  alt=""
+                  alt={"Image of " + member.full_name[0].text + ", " + member.job_title[0].text + "at Ontrack Retail"}
                 />
                 <img src={member.linkedin.url} className="linkedinImage centerImage padDown" aria-label={"click here to find " + member.full_name[0].text + " on linkedin"} alt="" />
                 <div className="title_job" aria-hidden="true">
@@ -31,9 +31,10 @@ export const Bio = ({ biopic }) => (
                 <div className="small-text">
                   <PrismicText field={member.bio_copy} />
                 </div>
-              </section>
+              </section> 
+              </a>
             </li>
-          </a>
+         
         ))}
       </ul>
     </div>

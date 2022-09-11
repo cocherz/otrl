@@ -26,9 +26,9 @@ export const Careers = () => {
       <Layout wrapperClass="homepage" menuDoc={main} footerDoc={main}>
         
         <section className="active-roles bottom-padding">
-          <h2 className="page-heading heading-background">
+          <h1 className="page-heading heading-background">
             <PrismicText field={main.data.current_vacancies} />
-          </h2>
+          </h1>
           <div className="flex">
             <div className="card_grid content">
               {jobs.map((job, i) => (

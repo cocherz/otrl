@@ -35,11 +35,13 @@ footer {
 }
 
 h2.page-heading,
-h2.page-heading-center {
+h2.page-heading-center,
+h1.page-heading,
+h1.page-heading-center {
   text-align: center;
 }
 
-h2.subheading {
+h1.subheading {
   line-height: 50px;
   padding-left: 20px;
 }
@@ -94,6 +96,10 @@ h2.subheading {
 
 .margin-container-tb {
   margin: 20px 0px;
+}
+
+.margin-container-tb-s {
+  margin: 15px 0px;
 }
 
 .section-container-tb {
@@ -776,7 +782,6 @@ a .purple-text:hover {
   .job-page-container {
     display: block;
   }
-
   .share-and-apply {
     display: flex;
     flex-direction: column-reverse;
@@ -784,16 +789,13 @@ a .purple-text:hover {
     padding: 0px;
     width: 100%;
   }
-
   .vLine {
     display: none;
   }
-
   .application-form {
     width: 85%;
     margin: auto;
   }
-
   .contact-us-container {
     box-shadow: 0px 0px 0px rgba(255, 255, 255, 0.15);
     border-radius: 0;
@@ -804,27 +806,23 @@ a .purple-text:hover {
     width: 100%;
     margin: auto;
   }
-
   .contact-us-b {
     order: 2;
   }
-
   .mobile-outline {
     background: var(--light-bg-color);
     box-shadow: 0px 10px 40px rgba(0, 7, 70, 0.15);
     border-radius: 20px;
   }
-
   .contact-us-c,
 .contact-us-a {
     width: 100%;
     margin: auto;
   }
-
   .contact-us-form {
     padding: 20px;
+    border-radius: 0px;
   }
-
   .contact-us-b,
 .contact-us-a {
     padding: 20px;
@@ -836,7 +834,6 @@ a .purple-text:hover {
     grid-template-columns: 100%;
     margin: auto;
   }
-
   .our-service-card {
     margin: auto;
   }
@@ -846,17 +843,16 @@ a .purple-text:hover {
 body {
     overflow-x: hidden;
   }
-
   body {
     position: relative;
   }
-
   h1 {
-    font-size: 22px;
+    font-family: "DM Sans";
+    font-style: normal;
     font-weight: 700;
-    line-height: 29px;
+    font-size: 22px;
+    line-height: 40px;
   }
-
   h2 {
     font-family: "DM Sans";
     font-style: normal;
@@ -864,7 +860,6 @@ body {
     font-size: 22px;
     line-height: 40px;
   }
-
   h3 {
     font-family: "DM Sans";
     font-style: normal;
@@ -872,27 +867,22 @@ body {
     font-size: 22px;
     line-height: 40px;
   }
-
   p, textarea {
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
     line-height: 22px;
   }
-
-  h2.page-heading {
+  h2.page-heading, h1.page-heading {
     padding: 20px;
     /* background-color: var(--light-bg-color); */
   }
-
   .partners-slider {
     padding-top: 20px;
   }
-
   .content-section {
     margin-bottom: 2rem;
   }
-
   .fixed {
     position: fixed;
     z-index: 2;
@@ -900,11 +890,9 @@ body {
     left: 0;
     width: 100%;
   }
-
   body {
     margin-top: 74px;
   }
-
   .site-header {
     justify-content: space-between;
     align-items: center;
@@ -912,11 +900,9 @@ body {
     z-index: 300;
     border-bottom: 2px solid #f3f4f6;
   }
-
   .mobile-nav .button {
     border: none;
   }
-
   .mobile-menu-container {
     position: absolute;
     margin-top: 5px;
@@ -925,70 +911,53 @@ body {
     width: 100vw;
     height: 100vh;
   }
-
   .mobile-menu-item {
     margin: 30px 10px;
   }
-
   .mobile-menu-item span {
     float: right;
     padding: 0 30px;
   }
-
   .mobile-menu.expanded {
     display: none;
     visibility: hidden;
   }
-
   .homepage-banner {
     padding: 20px;
   }
-
   .banner-title {
     font-size: 50px;
     line-height: 50px;
   }
-
-  .text-section-2col {
-    /* Chrome, Safari, Opera */
-    -moz-column-count: 1;
-    /* Firefox */
-    column-count: 1;
-    /* Chrome, Safari, Opera */
-    -moz-column-gap: 40px;
-    /* Firefox */
+  .text-section-2col { /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-gap: 40px; /* Firefox */
     column-gap: 40px;
   }
-
   .quote {
     font-size: 20px;
   }
-
   .mobile-hidden {
     display: none;
     visibility: hidden;
   }
-
   .highlight-left,
 .highlight-right {
     width: 100%;
     float: none;
   }
-
   .footer-content-container {
     display: block;
   }
-
   .footer-links-area {
     padding-top: 20px;
     display: grid;
     grid-template-columns: repeat(2, 50%);
   }
-
   .footer-links-section {
     padding: 40px 0px 0px 0px;
   }
-
   .footer-btn-copy {
     background: var(--main-purple);
     border: none;
@@ -1000,7 +969,6 @@ body {
     border-radius: 10px;
     margin: 10px 10px 0px 10px;
   }
-
   /* carrers ppage */
   .CareerQuote {
     display: flex;
@@ -1008,16 +976,13 @@ body {
     flex-wrap: wrap;
     width: 100%;
   }
-
   .active-jobs {
     display: block;
   }
-
   .job-img {
     visibility: hidden;
     display: none;
   }
-
   .active-job-container {
     margin: 20px auto;
     width: 80%;
@@ -1025,25 +990,30 @@ body {
     height: -moz-fit-content;
     height: fit-content;
   }
-
   /* job post page */
   .desktop-hidden {
     display: block;
     visibility: visible;
   }
-
   .jobHeaders {
     padding: 0;
   }
-
-  .client-images {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 17px;
-    align-items: center;
-    overflow-x: hidden;
-  }
+  /* .client-images .li {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 17px;
+      align-items: center;
+      overflow-x: hidden;
+  } */
 }
+.client-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 17px;
+  align-items: center;
+  overflow-x: hidden;
+}
+
 /* client and partners styling */
 .slick-track {
   display: flex !important;

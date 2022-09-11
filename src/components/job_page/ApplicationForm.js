@@ -1,34 +1,35 @@
 import React, { useState } from "react";
 import { GATracker } from "../structure/GoogleAnalytics";
 import { emailValidate, validate, fileTypeValid, fileSizeValidate } from "../structure/validation";
+import DICT from "../../dictionary"
+import { ErrorMessage } from "../structure/ErrorMessages";
+import { ApplicationSubmitted } from "./ApplicationSubmitted";
 
 export const ApplicationForm = ({ jobTitle }) => {
-
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
+  const gaEvent = GATracker(`Job-post-${jobTitle}`);
+  
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
+  
   const [files, setFiles] = useState("");
   const [base64, setBase64] = useState("");
-
   const [loading, setLoadingState] = useState();
   const [failedSend, setFailedSend] = useState(false);
-
-  const [err] = useState({
-    firstNameErr: "* Please enter your first name",
-    lastNameErr: "* Please enter your last name",
-    emailErr: "* Please check your email",
-    fileErr: "* Please attach your resume in pdf, doc, or docx",
-    fileSizeErr: "* File size should be less than 4mb",
-    submitErr: "* Unfourtunatley there was an error, please try again"
-  });
-
-  const gaEvent = GATracker(`Job-post-${jobTitle}`);
+  const [submitted, setSubmitted] = useState(false);
 
   const isValid = () => {
     let valid = true;
-    let emailValid = emailValidate(email);
-    let lastNameValid = validate(lastName, "last-name");
-    let firstNameValid = validate(firstName, "first-name");
+    let firstNameValid = validate(form.firstName, "first-name");
+
+    // if !forms.firstName throwErr(firstName)
+
+
+
+    let lastNameValid = validate(form.lastName, "last-name");
+    let emailValid = emailValidate(form.email);
     let fileValid = fileTypeValid(files, "resume");
     let fileSizeValid = fileSizeValidate(files.size, "resume")
     valid = firstNameValid && lastNameValid && firstNameValid && fileValid && emailValid && fileSizeValid;
@@ -45,15 +46,12 @@ export const ApplicationForm = ({ jobTitle }) => {
       const url = "https://9ms7dfz6i0.execute-api.eu-west-1.amazonaws.com/stage/SendEmail";
       const config = {
         method: "POST",
-     
         headers: {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          senderName: "maxwell.cochrane+dev@gmail.com",
-          senderEmail: "maxwell.cochrane+dev@gmail.com",
-          subject: `${jobTitle} application from ${firstName} ${lastName}`,
-          message: `New application from ${firstName} ${lastName} ${email}`,
+          subject: `${jobTitle} application from ${form.firstName} ${form.lastName}`,
+          message: `New application from ${form.firstName} ${form.lastName} ${form.email}`,
           base64Data: base64,
           fileName: files.name,
         }),
@@ -62,11 +60,9 @@ export const ApplicationForm = ({ jobTitle }) => {
       let resp = await fetch(url, config)
         .then(
           setLoadingState(true))
-
       if ((resp.ok)) {
         setLoadingState(false);
-        document.getElementById("unsubmitted").style.display = "none";
-        document.getElementById("submitted").style.display = "block";
+        setSubmitted(true)
       } else {
         setLoadingState(false);
         setFailedSend(true);
@@ -108,6 +104,8 @@ export const ApplicationForm = ({ jobTitle }) => {
 
   return (
     <section id="application-form">
+      {!submitted ? 
+
       <form
         id="unsubmitted"
         onSubmit={(e) => {
@@ -118,27 +116,26 @@ export const ApplicationForm = ({ jobTitle }) => {
       >
         <h3 aria-label="Application form"> Application</h3>
 
-        <label aria-label="First name">
+        <label aria-label="First name" aria-required="true">
           <span aria-hidden="true"> First Name * </span>
-          <input className="input-field" name="firstName" id="first-name" type="text" checked={firstName} onChange={(e) => setFirstName(e.target.value)} />
+          <input className="input-field" name="firstName" id="first-name" type="text" checked={form.firstName} onChange={(e) => setForm((form) => ({ ...form, firstName: e.target.value }))} />
         </label>
-        <h5 id="first-name-error" className="error-message" aria-label="First name is invalid">
-          {err.firstNameErr}
-        </h5>
-
-        <label aria-label="Last name">
+        <ErrorMessage err={DICT.firstNameErr} elementID="first-name-error" />
+        <label aria-label="Last name" aria-required="true">
           <span aria-hidden="true"> Last Name * </span>
-          <input className="input-field" name="lastName" id="last-name" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+          <input className="input-field" name="lastName" id="last-name" type="text" value={form.lastName} onChange={(e) => setForm((form) => ({ ...form, lastName: e.target.value }))} />
         </label>
-
-        <h5 id="last-name-error" className="error-message" aria-label="Last name is invalid">
-          {err.lastNameErr}
-        </h5>
-        <label aria-label="Email Address">
+        <ErrorMessage err={DICT.lastNameErr} elementID="last-name-error" />
+        
+        
+        <label aria-label="Email Address" aria-required="true">
           <span aria-hidden="true"> Email Address * </span>
-          <input className="input-field" name="email" id="email" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input className="input-field" name="email" id="email" type="text" value={form.email} onChange={(e) => setForm((form) => ({ ...form, email: e.target.value }))} />
         </label>
-        <h5 id="email-error" className="error-message" aria-label="Email is invalid">{err.emailErr}</h5>
+        <ErrorMessage err={DICT.emailErr} elementID="email-error" />
+        
+        
+        
         <label>
           <span aria-hidden="true"> Resume * </span>
           <div
@@ -155,7 +152,7 @@ export const ApplicationForm = ({ jobTitle }) => {
               dropFile(e.dataTransfer.files);
             }}
           >
-            <label htmlFor="file-upload" aria-hidden="false">
+            <label htmlFor="file-upload" aria-hidden="false" aria-required="true">
               {files && (
                 <div
                   className="cursorpointer"
@@ -178,11 +175,11 @@ export const ApplicationForm = ({ jobTitle }) => {
                 </div>
               )}
             </label>
-            {!files && <input id="file-upload" type="file" accept=".pdf, .doc, .docx" onChange={addFile} />}
+            {!files && <input id="file-upload" type="file" accept=".pdf, .doc, .docx" onChange={addFile} aria-required="true"/>}
           </div>
-          <h5 id="resume-error" className="error-message" aria-label="error, please attach a resume"> {err.fileErr} </h5>
-          <h5 id="resume-size-error" className="error-message" aria-label="error, resume file size too large, please ensure its less than 4mb"> {err.fileSizeErr}</h5>
         </label>
+          <ErrorMessage err={DICT.fileErr} elementID="resume-error" /> 
+          <ErrorMessage err={DICT.fileSizeErr} elementID="resume-size-error" /> 
 
         <div className="submitCTA">
           <button type="submit" value="Submit" className="primary-button wide-btn">
@@ -192,15 +189,14 @@ export const ApplicationForm = ({ jobTitle }) => {
         {!failedSend ? (
           true
         ) : (
-          <h5 id="send-error" className="message" aria-label="Email is invalid">
-            {err.submitErr}
-          </h5>
+          <span id="send-error" className="message" aria-label="There was an error in submitting your application, please try again">
+            {DICT.submitErr}
+          </span>
         )}
       </form>
-      <div className="application-form " id="submitted">
-        {" "}
-        <h3>Thanks for applying to our {jobTitle} role, if its a match we'll be in touch! </h3>{" "}
-      </div>
+      :
+      <ApplicationSubmitted jobTitle={jobTitle}/> 
+        }
     </section>
   );
 };

@@ -8,7 +8,7 @@ export const ShareVacany = ({ icons, job }) => {
     <section className="section-container-lr">
       <h2> Share this vacancy </h2>
       <div className="social-share-icons">
-        <a href={`linkedin.com/sharing/share-offsite/?mini=true&url=${window.location.href}&title=${shareJobTile}%20role%20at%20Ontrack%20Retail&source=${window.location.hostname}`} aria-label="share this vacancy on linkedin">
+        <a href={`https://linkedin.com/sharing/share-offsite/?mini=true&url=${window.location.href}&title=${shareJobTile}%20role%20at%20Ontrack%20Retail&source=${window.location.hostname}`} aria-label="share this vacancy on linkedin">
           <img src={icons.linkedin.url} alt={icons.linkedin.alt} className="social-image"/>
         </a>
         <a href={`http://twitter.com/share?text=${shareJobTile}&url=${window.location.href}`} aria-label="share this vacancy on twitter">

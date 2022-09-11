@@ -3,10 +3,11 @@ import { PrismicText } from "@prismicio/react";
 
 export const OurSericeCard = (data, key) => {
   return (
+    <li> 
     <div className="our-service-card" key={key}>
       <img className="service-card-image centerImage" src={data.data.service_image.url} alt={data.data.service_image.alt}/>
       <div className="service_copy">
-        <h3 className="center service-title bottom-padding">
+        <h3 className="center service-title margin-container-tb-s">
           <PrismicText field={data.data.service_title} />
         </h3>
         <p className="small">
@@ -14,5 +15,6 @@ export const OurSericeCard = (data, key) => {
         </p>
       </div>
     </div>
+    </li>
   );
 };

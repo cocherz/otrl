@@ -10,11 +10,11 @@ export const OurServices = (data) => {
         <h2 className="center section-container-tb">
           <PrismicText field={data.data.body[0].primary.our_services_header} />
         </h2>
-        <section className="our-service-cards">
+        <ul className="our-service-cards">
           {data.data.body[0].items.map((item, i) => (
             <OurSericeCard data={item} key={i} />
           ))}
-        </section>
+        </ul>
 
         <div className="our-service-copy center">
           <PrismicRichText field={data.data.body[0].primary.our_services_copy} />

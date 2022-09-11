@@ -3,8 +3,8 @@ import React from "react";
 
 const ImageLink = ({ imageLink }) => {
   return (
-    <a href={imageLink.url} aria-label={"Find us on " + imageLink.image.alt + " here"}>
-      <li>
+    <a href={imageLink.url.url} aria-label={imageLink.image.alt}>
+      <li aria-hidden="true">
         <img className="social-image " src={imageLink.image.url} alt={imageLink.image.alt} />
       </li>
     </a>
@@ -46,11 +46,13 @@ const ContactInfo = ({ footerData }) => {
 
 const FooterLinkList = ({ lists }) => {
   return (
-    <div>
+    <ul>
+      <li>
       <a href={lists.link.url ? lists.link.url : "/" + lists.link.uid}>
         <PrismicText field={lists.page} />
       </a>
-    </div>
+      </li>
+    </ul>
   );
 };
 
@@ -87,9 +89,9 @@ export const Footer = ({ footerData }) => {
           <div className="copyright">
             <PrismicText field={footerData.copyright} />
           </div>
-          <div className="address">
+          <address className="address">
             <PrismicText field={footerData.company_address} />
-          </div>
+          </address>
         </section>
       </footer>
     );

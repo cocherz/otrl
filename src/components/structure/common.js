@@ -58,9 +58,9 @@ export const OurClients = (show) => {
     
     return (
       <section className="partners-slider">
-        <h2 className="center">
+        <h1 className="center">
           <PrismicText field={client.data.clients_and_partners_title} />
-        </h2>
+        </h1>
         <section className="client-images-carosel">
           <Slider dots={false} autoplay={true} autoplaySpeed={3000} variableHeight={true} slidesToShow={width < 500 ? 1 : width < 700 ? 2 : 3}>
             {client.data.clients_and_partner_images.map((img, i) => {
@@ -91,11 +91,11 @@ export const ClientFeedbackSlider = () => {
           {client.data.body[0].items.map((feedback, i) => {
             return (
               <section key={i}>
-                <p className="feedback-quote">
+                <blockquote className="feedback-quote">
                   <span className="quoteMarks purple-text"> " </span>
                   <PrismicText field={feedback.client_feedback} />
                   <span className="quoteMarks purple-text"> " </span>
-                </p>
+                </blockquote>
                 <div className="title-job-feedback">
                   <PrismicText field={feedback.client_name} />
                   <span className="purple-text bold"> | </span>

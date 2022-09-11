@@ -13,7 +13,7 @@ const BurgerMenu = ({ setIsNavExpanded, isNavExpanded }) => {
   return (
     <div className="mobile-nav" alt="menu">
       <div
-        aria-label={isNavExpanded ? "menu is collapsed, tap to open" : "menu is open, tap to close"}
+        aria-label={isNavExpanded ? "menu button, menu is collapsed, tap to open" : "menu button, menu is open, tap to close"}
         alt="menu"
         onClick={() => {
           setIsNavExpanded(!isNavExpanded);
@@ -49,10 +49,10 @@ export const MobileNav = ({ menuDoc }) => {
 
   if (menuDoc) {
     return (
-      <nav className="" aria-label="Mobile navigation">
-        <BurgerMenu isNavExpanded={isNavExpanded} setIsNavExpanded={setIsNavExpanded} />
+      <div className="mobile-menu-button" >
+        <BurgerMenu  isNavExpanded={isNavExpanded} setIsNavExpanded={setIsNavExpanded} />
         <section className={isNavExpanded ? "mobile-menu expanded" : "mobile--menu"}>
-          <div className="mobile-menu-container" aria-modal="true">
+          <div className="mobile-menu-container">
             <ol className="mobile-menu-items section-container">
               {menuDoc.data.menu_links.map((menuLink, i) => (
                 <li key={i} className={window.location.pathname === menuLink.link.url ? "bolden" : ""}>
@@ -63,7 +63,7 @@ export const MobileNav = ({ menuDoc }) => {
             </ol>
           </div>
         </section>
-      </nav>
+      </div>
     );
   }
   return null;

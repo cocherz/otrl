@@ -6,9 +6,9 @@ export const JobSummary = ({ job, i, icons }) => {
     <section className="job-headers section-container">
       <img className="job-img-large mobile-hidden" src={job.job_image.url} alt={job.job_image.src}/>
       <section className="jobCopy">
-        <h2 className="subheading">
+        <h1 className="subheading">
           <PrismicText field={job.job_title} key="0" />
-        </h2>
+        </h1>
         <div className="pills-row">
           <div className="pill align-img">
           <div className="small-icon-container ">

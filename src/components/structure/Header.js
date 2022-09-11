@@ -38,14 +38,14 @@ export const Header = ({ menuDoc }) => {
     return (
       <header className="fixed">
         <section className="site-header">
-          <a className="logo" alt="logo" href="/">
-            <LogoSVG aria-label="Ontrack Retail, press to go to home page" alt="logo" aria-describedby="hello" onClick={() => gaEvent("/home")} />
+          <a className="logo" aria-label="Ontrack retail" alt="logo" href="/" >
+            <LogoSVG aria-hidden="true" alt="logo" aria-describedby="hello" onClick={() => gaEvent("/home")} />
           </a>
-          <section className="desktop-nav mobile-hidden">
+          <section className="desktop-nav mobile-hidden" >
             <NavItems items={menuDoc.data.menu_links} />
             <PrimaryButton classNames="header-button" redirect="/contact-us" copy="Contact Us" />
           </section>
-          <section className="mobile-nav desktop-hidden">
+          <section className="mobile-nav desktop-hidden" aria-required="true" aria-label="hello">
             <MobileNav menuDoc={menuDoc} />
           </section>
         </section>

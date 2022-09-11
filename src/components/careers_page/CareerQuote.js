@@ -3,27 +3,27 @@ import { PrismicText } from "@prismicio/react";
 
 export const QuoteSection = ({ data }) => {
   return (
-    <section className="company-quotes section-container">
-      <div className="content-section">
+    <section className="company-quotes section-container content-section">
         <h2>
           <PrismicText field={data.quotes_title} />
         </h2>
-        <div className="CareerQuote">
+        <div className="CareerQuote">  
           {data.quotes.map((data, i) => (
             <CareerQuote data={data} key={i} />
           ))}
         </div>
-      </div>
     </section>
   );
 };
 
 export const CareerQuote = ({ data }) => (
-  <div className="quoteSection">
+  <section className="quoteSection">
     <div className="quoteCopy">
+      <blockquote> 
       <span className="quoteMarks"> " </span>
       <PrismicText field={data.quote} />
       <span className="quoteMarks"> " </span>
+      </blockquote>
     </div>
     <div className="quoter-info">
       <div className="quoterImage">
@@ -40,5 +40,5 @@ export const CareerQuote = ({ data }) => (
         </div>
       </div>
     </div>
-  </div>
+  </section>
 );

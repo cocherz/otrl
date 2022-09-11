@@ -8,14 +8,14 @@ import { PrismicText } from "@prismicio/react";
 export const AboutUsBanner = ({ banner }) => (
   <section className="homepage-banner background">
     <div className="banner-content section-container">
-      <h2 className="page-heading-center">
+      <h1 className="page-heading-center">
         <PrismicText field={banner.title} />
-      </h2>
-      <p className="banner-description">
+      </h1>
+      <blockquote className="banner-description">
         <span className="quoteMarks"> " </span>
         <PrismicText field={banner.tagline} />
         <span className="quoteMarks"> " </span>
-      </p>
+      </blockquote>
     </div>
   </section>
 );
